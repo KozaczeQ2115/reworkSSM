@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cennik | Shine Master</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .glass:hover {
+      transform: scale(1.02);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+<section id="cennik" class="py-20 bg-gray-900 px-4 text-white">
+  <h3 class="text-4xl font-bold text-center mb-10">Cennik Usług</h3>
+  <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+    <!-- Detailing Wnętrza -->
+    <div class="glass p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300">
+      <h4 class="text-2xl font-semibold mb-4 text-yellow-400">Detailing Wnętrza</h4>
+      <ul class="mb-4 space-y-2 text-gray-200">
+        <li>Małe auta: <strong>od 200 zł</strong></li>
+        <li>Średnie auta: <strong>od 250 zł</strong></li>
+        <li>Duże auta / SUV: <strong>od 300 zł</strong></li>
+        <li><em>Parowe czyszczenie, impregnacja tapicerki w cenie</em></li>
+      </ul>
+      <a href="cennik.html" class="inline-block bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-4 py-2 rounded transition">Zamów</a>
+    </div>
+
+    <!-- Polerowanie Lakieru -->
+    <div class="glass p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300">
+      <h4 class="text-2xl font-semibold mb-4 text-yellow-400">Polerowanie Lakieru</h4>
+      <ul class="mb-4 space-y-2 text-gray-200">
+        <li>Jednoetapowe: <strong>od 500 zł</strong></li>
+        <li>Wieloetapowe: <strong>od 800 zł</strong></li>
+        <li>Pomiar grubości lakieru: <strong>w cenie</strong></li>
+        <li><em>Efekt lustra gwarantowany</em></li>
+      </ul>
+      <a href="cennik.html" class="inline-block bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-4 py-2 rounded transition">Zamów</a>
+    </div>
+
+    <!-- Ochrona Ceramiczna -->
+    <div class="glass p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300">
+      <h4 class="text-2xl font-semibold mb-4 text-yellow-400">Ochrona Ceramiczna</h4>
+      <ul class="mb-4 space-y-2 text-gray-200">
+        <li>1-letnia powłoka: <strong>od 600 zł</strong></li>
+        <li>3-letnia powłoka: <strong>od 1000 zł</strong></li>
+        <li>Felgi i szyby: <strong>+150 zł</strong></li>
+        <li><em>Bead effect & ochrona UV</em></li>
+      </ul>
+      <a href="cennik.html" class="inline-block bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-4 py-2 rounded transition">Zamów</a>
+    </div>
+  </div>
+
+  <!-- Dodatkowe usługi -->
+  <div class="mt-20 max-w-4xl mx-auto">
+    <h4 class="text-3xl font-semibold text-center mb-6 text-yellow-400">Usługi dodatkowe</h4>
+    <div class="grid md:grid-cols-2 gap-6 text-gray-200">
+      <div class="glass p-4 rounded-lg">
+        <p>Pranie tapicerki punktowe: <strong>od 50 zł / miejsce</strong></p>
+        <p>Odświeżenie wnętrza: <strong>od 150 zł</strong></p>
+        <p>Ozonowanie: <strong>50 zł</strong></p>
+      </div>
+      <div class="glass p-4 rounded-lg">
+        <p>Impregnacja plastików: <strong>od 70 zł</strong></p>
+        <p>Regeneracja lamp: <strong>od 120 zł</strong></p>
+        <p>Mycie detailingowe szyb: <strong>od 40 zł</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shine Master - Profesjonalny Detailing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .glass {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    /* Styl sekcji przed i po czyszczeniu */
+/* Styl sekcji przed i po czyszczeniu */
+#przed-po {
+  background: linear-gradient(to right, #000000, #1a1a2e, #111111);
+}
+
+.image-compare {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.image-compare img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.image-compare .img-before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.image-compare:hover .img-before {
+  opacity: 0;
+}
+
+#przed-po h3 {
+  font-weight: 700;
+  color: #facc15;
+}
+
+#przed-po p {
+  color: #e5e7eb;
+}
+  </style>
+</head>
+<body class="bg-gradient-to-br from-black via-gray-900 to-black text-white min-h-screen">
+  <header class="p-6 flex justify-between items-center bg-black bg-opacity-70 sticky top-0 z-50">
+    <h1 class="text-3xl font-bold">Shine Master</h1>
+    <nav class="space-x-6">
+      <a href="cennik.html" class="hover:text-yellow-400 transition">Usługi</a>
+      <a href="cennik.html" class="hover:text-yellow-400 transition">Cennik</a>
+      <a href="#kontakt" class="hover:text-yellow-400 transition">Kontakt</a>
+      <a href="rezerwacje.html" class="bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-5 py-3 rounded-xl shadow-lg transition transform hover:scale-105 tracking-wider text-sm uppercase">
+  ZAREZERWUJ TERMIN
+</a>
+
+    </nav>
+  </header>
+
+  <section class="text-center py-20 px-4">
+    <h2 class="text-5xl font-bold mb-4">Detailing jakiego jeszcze nie widziałeś</h2>
+    <div class="text-2xl text-yellow-400 h-10">
+      <span id="typed-text"></span>
+    </div>
+    <a href="kontakt.html" class="mt-10 bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-6 py-3 rounded-xl transition transform hover:scale-105 inline-block text-center">
+  Umów się teraz
+</a>
+
+  </section>
+
+  <section id="uslugi" class="py-20 bg-gray-950 px-4">
+    <h3 class="text-4xl font-bold text-center mb-10">Nasze Usługi</h3>
+    <div class="grid md:grid-cols-3 gap-10">
+      <div class="glass p-6 rounded-xl shadow-lg">
+        <h4 class="text-2xl font-semibold mb-4">Detailing Wnętrza</h4>
+        <p>Dogłębne czyszczenie wnętrza pojazdu z użyciem pary i dedykowanej chemii.</p>
+      </div>
+<div class="glass p-6 rounded-xl shadow-lg transition-transform duration-500 ease-in-out hover:scale-105">
+  <h4 class="text-2xl font-semibold mb-4">
+    Polerowanie Lakieru 
+    <span class="text-yellow-400 text-sm align-top animate-pulse">(soon)</span>
+  </h4>
+  <p>Profesjonalna korekta lakieru w kilku etapach z pomiarem grubości powłoki.</p>
+</div>
+      <div class="glass p-6 rounded-xl shadow-lg">
+        <h4 class="text-2xl font-semibold mb-4">Ochrona Ceramiczna</h4>
+        <p>Wielomiesięczna ochrona przed brudem, UV i wodą dzięki powłokom ceramicznym.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeria" class="py-20 bg-black px-4">
+    <h3 class="text-4xl font-bold text-center mb-10">Galeria Prac</h3>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <img src="https://placehold.co/300x200" class="rounded-xl hover:scale-105 transition duration-300" alt="Auto 1">
+      <img src="https://placehold.co/300x200" class="rounded-xl hover:scale-105 transition duration-300" alt="Auto 2">
+      <img src="https://placehold.co/300x200" class="rounded-xl hover:scale-105 transition duration-300" alt="Auto 3">
+      <img src="https://placehold.co/300x200" class="rounded-xl hover:scale-105 transition duration-300" alt="Auto 4">
+    </div>
+  </section>
+
+  <section id="przed-po" class="py-20 bg-gray-900 text-white px-4">
+  <h3 class="text-4xl font-bold text-center mb-12">Przed i Po Czyszczeniu</h3>
+  <div class="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+    <!-- Box 1 -->
+    <div class="relative group overflow-hidden rounded-xl shadow-xl">
+      <img src="przed.jpg" alt="Przed czyszczeniem" class="w-full h-full object-cover group-hover:opacity-0 transition duration-500">
+      <img src="po.jpg" alt="Po czyszczeniu" class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition duration-500">
+      <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 px-4 py-2 text-sm">Najedź, aby zobaczyć efekt</div>
+    </div>
+
+    <!-- Box 2 -->
+    <div class="relative group overflow-hidden rounded-xl shadow-xl">
+      <img src="img/przed2.jpg" alt="Przed czyszczeniem" class="w-full h-full object-cover group-hover:opacity-0 transition duration-500">
+      <img src="img/po2.jpg" alt="Po czyszczeniu" class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition duration-500">
+      <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 px-4 py-2 text-sm">Najedź, aby zobaczyć efekt</div>
+    </div>
+  </div>
+</section>
+
+  <section class="py-20 px-4 bg-gray-950">
+    <h3 class="text-4xl font-bold text-center mb-10">Zadowolenie klientów</h3>
+    <div class="w-full max-w-xl mx-auto">
+      <canvas id="reviewsChart"></canvas>
+    </div>
+  </section>
+
+  <section id="kontakt" class="py-20 bg-black px-4 text-white">
+  <h3 class="text-4xl font-bold text-center mb-10">Skontaktuj się z nami</h3>
+  <form class="max-w-2xl mx-auto glass p-8 rounded-2xl space-y-6 shadow-xl">
+    <div>
+      <label for="name" class="block text-sm font-medium mb-1">Imię i nazwisko</label>
+      <input type="text" id="name" name="name" placeholder="Jan Kowalski" required class="w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-yellow-500">
+    </div>
+
+    <div>
+      <label for="email" class="block text-sm font-medium mb-1">Adres e-mail</label>
+      <input type="email" id="email" name="email" placeholder="jan@example.com" required class="w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-yellow-500">
+    </div>
+
+    <div>
+      <label for="message" class="block text-sm font-medium mb-1">Wiadomość</label>
+      <textarea id="message" name="message" rows="5" placeholder="Twoja wiadomość..." required class="w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
+    </div>
+
+    <button type="submit" class="bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-6 py-3 rounded-xl transition transform hover:scale-105">
+      Wyślij wiadomość
+    </button>
+  </form>
+</section>
+
+
+  <footer class="text-center py-6 bg-black text-sm text-gray-400">&copy; 2025 Shine Master - Wszelkie prawa zastrzeżone.</footer>
+
+  <script>
+    // Animacja typed.js
+    const typed = new Typed('#typed-text', {
+      strings: ['Profesjonalna pielęgnacja aut', 'Polerowanie lakieru', 'Detailing klasy premium', 'Najlepsza jakość w Kutnie', 'Najniższe ceny - profesjonalne podejście'],
+      typeSpeed: 50,
+      backSpeed: 30,
+      loop: true
+    });
+
+    // Wykres Chart.js
+    const ctx = document.getElementById('reviewsChart').getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['2021', '2022', '2023', '2024', '2025'],
+        datasets: [{
+          label: 'Pozytywne opinie (%)',
+          data: [85, 90, 95, 97, 99],
+          backgroundColor: 'rgba(234, 179, 8, 0.8)',
+          borderRadius: 10
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
