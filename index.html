@@ -177,15 +177,109 @@
 
 
 
-  <section id="galeria" class="py-20 bg-black px-4">
-    <h3 class="text-4xl font-bold text-center mb-10">Galeria Prac</h3>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <img src="https://placehold.co/300x200" class="rounded-xl hover:scale-105 transition duration-300" alt="Auto 1">
-      <img src="https://placehold.co/300x200" class="rounded-xl hover:scale-105 transition duration-300" alt="Auto 2">
-      <img src="https://placehold.co/300x200" class="rounded-xl hover:scale-105 transition duration-300" alt="Auto 3">
-      <img src="https://placehold.co/300x200" class="rounded-xl hover:scale-105 transition duration-300" alt="Auto 4">
-    </div>
-  </section>
+<section id="galeria" class="py-20 bg-black px-4">
+  <h3 class="text-4xl font-bold text-center mb-10 text-white">Galeria Prac</h3>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <img src="https://placehold.co/300x200" class="rounded-xl hover:scale-105 transition duration-300 cursor-pointer" alt="Auto 1" />
+    <img src="https://placehold.co/300x200" class="rounded-xl hover:scale-105 transition duration-300 cursor-pointer" alt="Auto 2" />
+    <img src="https://placehold.co/300x200" class="rounded-xl hover:scale-105 transition duration-300 cursor-pointer" alt="Auto 3" />
+    <img src="https://placehold.co/300x200" class="rounded-xl hover:scale-105 transition duration-300 cursor-pointer" alt="Auto 4" />
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" style="display:none;">
+    <div id="lightbox-bg"></div>
+    <img id="lightbox-img" alt="Powiększony obraz" />
+    <button id="lightbox-close" aria-label="Zamknij galerię">&times;</button>
+  </div>
+
+  <style>
+    #lightbox {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    #lightbox-bg {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(4px);
+      transition: opacity 0.3s ease;
+    }
+    #lightbox-img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.5);
+      z-index: 1001;
+      transform: scale(0.7);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    #lightbox.show #lightbox-img {
+      transform: scale(1);
+      opacity: 1;
+    }
+    #lightbox-close {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      background: transparent;
+      border: none;
+      font-size: 3rem;
+      color: white;
+      cursor: pointer;
+      z-index: 1002;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+    #lightbox-close:hover {
+      color: #ff4444;
+    }
+  </style>
+
+  <script>
+    const images = document.querySelectorAll('#galeria img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxBg = document.getElementById('lightbox-bg');
+    const closeBtn = document.getElementById('lightbox-close');
+
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.style.display = 'flex';
+        // Trigger animation
+        setTimeout(() => {
+          lightbox.classList.add('show');
+        }, 10);
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('show');
+      setTimeout(() => {
+        lightbox.style.display = 'none';
+        lightboxImg.src = '';
+      }, 300);
+    }
+
+    closeBtn.addEventListener('click', closeLightbox);
+    lightboxBg.addEventListener('click', closeLightbox);
+
+    // Zamknij ESC
+    document.addEventListener('keydown', e => {
+      if (e.key === "Escape" && lightbox.style.display === 'flex') {
+        closeLightbox();
+      }
+    });
+  </script>
+</section>
+
 
   <section id="przed-po" class="py-20 bg-gray-900 text-white px-4">
   <h3 class="text-4xl font-bold text-center mb-12">Przed i Po Czyszczeniu</h3>
@@ -206,12 +300,189 @@
   </div>
 </section>
 
-  <section class="py-20 px-4 bg-gray-950">
-    <h3 class="text-4xl font-bold text-center mb-10">Zadowolenie klientów</h3>
-    <div class="w-full max-w-xl mx-auto">
-      <canvas id="reviewsChart"></canvas>
+<section class="py-20 px-4 bg-gray-950">
+  <h3 class="text-4xl font-bold text-center mb-10 text-yellow-400">Przebieg czyszczenia samochodu</h3>
+
+  <div class="timeline-container max-w-4xl mx-auto relative">
+    <!-- Animowana linia z gradientem -->
+    <div class="timeline-line animated"></div>
+
+    <!-- Kroki procesu -->
+    <div class="timeline-steps flex justify-between relative z-20">
+      <div class="timeline-step flex flex-col items-center relative cursor-pointer group" data-step="0">
+        <div class="step-circle active"></div>
+        <span>Mycie</span>
+      </div>
+      <div class="timeline-step flex flex-col items-center relative cursor-pointer group" data-step="1">
+        <div class="step-circle"></div>
+        <span>Polerowanie</span>
+      </div>
+      <div class="timeline-step flex flex-col items-center relative cursor-pointer group" data-step="2">
+        <div class="step-circle"></div>
+        <span>Zabezpieczenie</span>
+      </div>
+      <div class="timeline-step flex flex-col items-center relative cursor-pointer group" data-step="3">
+        <div class="step-circle"></div>
+        <span>Odbiór auta</span>
+      </div>
     </div>
-  </section>
+
+    <!-- Opinia klienta -->
+    <div id="reviewsCarousel" class="mt-16 max-w-2xl mx-auto text-yellow-300 text-center">
+      <p>"Fantastyczna jakość i dbałość o szczegóły! Auto wygląda jak nowe po myciu i polerowaniu."</p>
+      <div class="author mt-4 font-semibold italic">- Jan Kowalski</div>
+    </div>
+  </div>
+
+  <style>
+    /* Linia z gradientem i animacją */
+    .timeline-line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #facc15 0%, #ffd54f 50%, #facc15 100%);
+      border-radius: 3px;
+      overflow: hidden;
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+
+    /* Animacja przesuwającego się gradientu */
+    @keyframes flowGradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 200% 50%;
+      }
+    }
+
+    .timeline-line.animated {
+      background-size: 200% 100%;
+      animation: flowGradient 4s linear infinite;
+    }
+
+    /* Kółeczka */
+    .step-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, #facc15, #b28704);
+      border: 3px solid white;
+      box-shadow:
+        0 0 8px #facc15,
+        inset 0 0 10px #ffeb7f;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      z-index: 10;
+    }
+
+    .step-circle::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(250, 204, 21, 0.2);
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+
+    /* Pulsowanie aktywnego kółka */
+    .step-circle.active {
+      transform: scale(1.3);
+      box-shadow:
+        0 0 15px #facc15,
+        0 0 30px #facc15,
+        inset 0 0 15px #fff9b3;
+    }
+
+    .step-circle.active::after {
+      opacity: 1;
+      animation: pulseGlow 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      50% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+    }
+
+    /* Teksty pod kółeczkami */
+    .timeline-step span {
+      margin-top: 12px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #facc15;
+      user-select: none;
+    }
+
+    /* Opinie */
+    #reviewsCarousel p {
+      font-size: 1.125rem;
+      line-height: 1.5;
+    }
+    #reviewsCarousel .author {
+      margin-top: 1rem;
+      font-weight: 700;
+      text-align: right;
+      font-style: italic;
+      color: #facc15;
+    }
+  </style>
+
+  <script>
+    // Prosta funkcja do zmiany aktywnego kroku i opinii
+    const steps = document.querySelectorAll('.timeline-step');
+    const circles = document.querySelectorAll('.step-circle');
+    const reviewText = document.querySelector('#reviewsCarousel p');
+    const reviewAuthor = document.querySelector('#reviewsCarousel .author');
+
+    const reviews = [
+      {
+        text: '"Fantastyczna jakość i dbałość o szczegóły! Auto wygląda jak nowe po myciu i polerowaniu."',
+        author: '- Jan Kowalski'
+      },
+      {
+        text: '"Polerowanie było perfekcyjne, a samochód błyszczy jak nigdy wcześniej!"',
+        author: '- Anna Nowak'
+      },
+      {
+        text: '"Zabezpieczenie lakieru na najwyższym poziomie. Polecam każdemu!"',
+        author: '- Marek Wiśniewski'
+      },
+      {
+        text: '"Szybki i profesjonalny odbiór auta. Jestem zachwycony usługą!"',
+        author: '- Katarzyna K.'
+      }
+    ];
+
+    steps.forEach((step, index) => {
+      step.addEventListener('click', () => {
+        // Reset aktywnych
+        circles.forEach(c => c.classList.remove('active'));
+        circles[index].classList.add('active');
+
+        // Podmiana opinii
+        reviewText.textContent = reviews[index].text;
+        reviewAuthor.textContent = reviews[index].author;
+      });
+    });
+  </script>
+</section>
+
+
 
 <section id="kontakt" class="py-24 bg-gradient-to-br from-gray-900 via-black to-gray-800 px-6 text-white">
   <h3 class="text-5xl font-extrabold text-center mb-16 tracking-wide">Skontaktuj się z nami</h3>
