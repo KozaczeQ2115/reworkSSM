@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shine Master - Profesjonalny Detailing</title>
+  <title>Twoja Nazwa - Profesjonalny Detailing</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
@@ -61,7 +61,7 @@
 </head>
 <body class="bg-gradient-to-br from-black via-gray-900 to-black text-white min-h-screen">
   <header class="p-6 flex justify-between items-center bg-black bg-opacity-70 sticky top-0 z-50">
-    <h1 class="text-3xl font-bold">Shine Master</h1>
+    <h1 class="text-3xl font-bold">Twoja Nazwa</h1>
     <nav class="space-x-6">
       <a href="cennik.html" class="hover:text-yellow-400 transition">Usługi</a>
       <a href="cennik.html" class="hover:text-yellow-400 transition">Cennik</a>
@@ -84,26 +84,98 @@
 
   </section>
 
-  <section id="uslugi" class="py-20 bg-gray-950 px-4">
-    <h3 class="text-4xl font-bold text-center mb-10">Nasze Usługi</h3>
-    <div class="grid md:grid-cols-3 gap-10">
-      <div class="glass p-6 rounded-xl shadow-lg">
-        <h4 class="text-2xl font-semibold mb-4">Detailing Wnętrza</h4>
-        <p>Dogłębne czyszczenie wnętrza pojazdu z użyciem pary i dedykowanej chemii.</p>
-      </div>
-<div class="glass p-6 rounded-xl shadow-lg transition-transform duration-500 ease-in-out hover:scale-105">
-  <h4 class="text-2xl font-semibold mb-4">
-    Polerowanie Lakieru 
-    <span class="text-yellow-400 text-sm align-top animate-pulse">(soon)</span>
-  </h4>
-  <p>Profesjonalna korekta lakieru w kilku etapach z pomiarem grubości powłoki.</p>
-</div>
-      <div class="glass p-6 rounded-xl shadow-lg">
-        <h4 class="text-2xl font-semibold mb-4">Ochrona Ceramiczna</h4>
-        <p>Wielomiesięczna ochrona przed brudem, UV i wodą dzięki powłokom ceramicznym.</p>
-      </div>
+<section id="uslugi" class="py-20 bg-gray-950 px-4 text-white">
+  <h3 class="text-4xl font-bold text-center mb-10">Kliknij na auto, aby odkryć usługi</h3>
+  <div class="relative max-w-4xl mx-auto">
+    <img src="https://narzedzia.elektromobilni.pl/generated-images/file/1000x500/893d88772d97f85ccde1bc642ee48f8a.png/Tesla_Model_3_bialy_bok.png" alt="Samochód" class="w-full rounded-xl shadow-2xl">
+
+    <!-- Klikalne punkty -->
+    <button onclick="showService('wnetrze', this)" class="absolute top-[50%] left-[38%] bg-yellow-500 hover:bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg transition">Wnętrze</button>
+    <button onclick="showService('karoseria', this)" class="absolute top-[30%] left-[70%] bg-yellow-500 hover:bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg transition">Lakier</button>
+    <button onclick="showService('ceramika', this)" class="absolute top-[65%] left-[75%] bg-yellow-500 hover:bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg transition">Ceramika</button>
+    <button onclick="showService('felgi', this)" class="absolute top-[70%] left-[20%] bg-yellow-500 hover:bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg transition">Felgi</button>
+  </div>
+
+  <!-- Kontener z ofertą -->
+  <div id="service-details" class="relative mt-10 max-w-3xl mx-auto transition-all duration-500 opacity-0 scale-95 pointer-events-none">
+    <button onclick="hideService()" class="absolute top-2 right-2 text-white text-2xl font-bold hover:text-yellow-400">&times;</button>
+    <div class="glass p-6 rounded-xl shadow-xl" id="service-content">
+      <!-- dynamiczna treść -->
     </div>
-  </section>
+  </div>
+</section>
+
+<style>
+  /* Podświetlenie aktywnego przycisku */
+  .active-button {
+    background-color: #facc15; /* żółty */
+    box-shadow: 0 0 10px #facc15;
+    transform: scale(1.1);
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  }
+
+  /* Płynna animacja pojawiania się kontenera */
+  #service-details {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+</style>
+
+<script>
+  const serviceData = {
+    wnetrze: {
+      title: "Detailing Wnętrza",
+      desc: "Dogłębne czyszczenie wnętrza pojazdu z użyciem pary, ozonowania i dedykowanej chemii. Efekt świeżości gwarantowany!"
+    },
+    karoseria: {
+      title: "Polerowanie Lakieru",
+      desc: "Profesjonalna korekta lakieru w kilku etapach z pomiarem grubości powłoki. Znikają rysy, pojawia się blask!"
+    },
+    ceramika: {
+      title: "Ochrona Ceramiczna",
+      desc: "Zabezpieczenie lakieru powłoką ceramiczną – odporność na brud, wodę i UV. Trwałość do 24 miesięcy!"
+    },
+    felgi: {
+      title: "Renowacja Felg",
+      desc: "Profesjonalne czyszczenie, polerowanie i zabezpieczenie felg. Twoje koła będą wyglądać jak nowe!"
+    }
+  };
+
+  function showService(key, btn) {
+    const box = document.getElementById("service-details");
+    const content = document.getElementById("service-content");
+
+    // Aktualizuj treść
+    content.innerHTML = `
+      <h4 class="text-2xl font-bold mb-4 text-yellow-400">${serviceData[key].title}</h4>
+      <p>${serviceData[key].desc}</p>
+    `;
+
+    // Pokaż kontener
+    box.classList.remove("opacity-0", "scale-95", "pointer-events-none");
+    box.classList.add("opacity-100", "scale-100", "pointer-events-auto");
+
+    // Usuń aktywne podświetlenie z innych przycisków
+    document.querySelectorAll('#uslugi button').forEach(button => {
+      button.classList.remove('active-button');
+    });
+
+    // Dodaj podświetlenie do klikniętego przycisku
+    btn.classList.add('active-button');
+  }
+
+  function hideService() {
+    const box = document.getElementById("service-details");
+    box.classList.add("opacity-0", "scale-95", "pointer-events-none");
+    box.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
+
+    // Usuń podświetlenie ze wszystkich przycisków
+    document.querySelectorAll('#uslugi button').forEach(button => {
+      button.classList.remove('active-button');
+    });
+  }
+</script>
+
+
 
   <section id="galeria" class="py-20 bg-black px-4">
     <h3 class="text-4xl font-bold text-center mb-10">Galeria Prac</h3>
@@ -141,29 +213,103 @@
     </div>
   </section>
 
-  <section id="kontakt" class="py-20 bg-black px-4 text-white">
-  <h3 class="text-4xl font-bold text-center mb-10">Skontaktuj się z nami</h3>
-  <form class="max-w-2xl mx-auto glass p-8 rounded-2xl space-y-6 shadow-xl">
-    <div>
-      <label for="name" class="block text-sm font-medium mb-1">Imię i nazwisko</label>
-      <input type="text" id="name" name="name" placeholder="Jan Kowalski" required class="w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-yellow-500">
-    </div>
+<section id="kontakt" class="py-24 bg-gradient-to-br from-gray-900 via-black to-gray-800 px-6 text-white">
+  <h3 class="text-5xl font-extrabold text-center mb-16 tracking-wide">Skontaktuj się z nami</h3>
+  
+  <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    
+    <!-- Tekst / info -->
+    <div class="space-y-6">
+      <p class="text-lg leading-relaxed max-w-md mx-auto md:mx-0">
+        Masz pytania? Chcesz umówić się na usługę? Napisz do nas — odpowiemy jak najszybciej!
+      </p>
+      <div class="space-y-4 max-w-md mx-auto md:mx-0">
+       <div class="space-y-4 max-w-md mx-auto md:mx-0">
+  <div class="flex items-center space-x-3">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-18 8h18"/>
+    </svg>
+    <a href="mailto:kontakt@twojafirma.pl" class="hover:text-yellow-300 transition">kontakt@twojafirma.pl</a>
+  </div>
+  <div class="flex items-center space-x-3">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h2l3.6 7.59-1.35 2.44a1 1 0 00.84 1.57H19"/>
+    </svg>
+    <a href="tel:+48123456789" class="hover:text-yellow-300 transition">+48 123 456 789</a>
+  </div>
+</div>
 
-    <div>
-      <label for="email" class="block text-sm font-medium mb-1">Adres e-mail</label>
-      <input type="email" id="email" name="email" placeholder="jan@example.com" required class="w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-yellow-500">
+      </div>
     </div>
-
-    <div>
-      <label for="message" class="block text-sm font-medium mb-1">Wiadomość</label>
-      <textarea id="message" name="message" rows="5" placeholder="Twoja wiadomość..." required class="w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
-    </div>
-
-    <button type="submit" class="bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-6 py-3 rounded-xl transition transform hover:scale-105">
-      Wyślij wiadomość
-    </button>
-  </form>
+    
+    <!-- Formularz -->
+    <form class="glass bg-black bg-opacity-70 p-10 rounded-3xl shadow-2xl space-y-8 max-w-lg mx-auto">
+      <div>
+        <label for="name" class="block text-sm font-semibold mb-2 tracking-wide">Imię i nazwisko</label>
+        <div class="relative">
+          <input type="text" id="name" name="name" placeholder="Jan Kowalski" required
+                 class="w-full p-4 pl-12 rounded-xl text-black focus:outline-none focus:ring-4 focus:ring-yellow-400 transition" />
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-4 top-1/2 transform -translate-y-1/2 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A7 7 0 1119.88 6.196M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </div>
+      </div>
+      
+      <div>
+        <label for="email" class="block text-sm font-semibold mb-2 tracking-wide">Adres e-mail</label>
+        <div class="relative">
+          <input type="email" id="email" name="email" placeholder="jan@example.com" required
+                 class="w-full p-4 pl-12 rounded-xl text-black focus:outline-none focus:ring-4 focus:ring-yellow-400 transition" />
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-4 top-1/2 transform -translate-y-1/2 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12h.01M12 12h.01M8 12h.01M21 12c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8z" />
+          </svg>
+        </div>
+      </div>
+      
+      <div>
+        <label for="message" class="block text-sm font-semibold mb-2 tracking-wide">Wiadomość</label>
+        <textarea id="message" name="message" rows="5" placeholder="Twoja wiadomość..." required
+                  class="w-full p-4 rounded-xl text-black resize-none focus:outline-none focus:ring-4 focus:ring-yellow-400 transition"></textarea>
+      </div>
+      
+      <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-extrabold text-lg py-4 rounded-3xl transition-transform transform hover:scale-105 shadow-lg">
+        Wyślij wiadomość
+      </button>
+    </form>
+  </div>
 </section>
+
+
+<section id="faq" class="py-20 bg-gray-900 px-4 text-white">
+  <h3 class="text-4xl font-bold text-center mb-10">Najczęściej zadawane pytania</h3>
+  <div class="max-w-4xl mx-auto space-y-6">
+    <details class="glass p-4 rounded-xl cursor-pointer transition hover:shadow-lg">
+      <summary class="font-semibold text-lg">Jak długo trwa pełny detailing?</summary>
+      <p class="mt-2 text-sm text-gray-300">W zależności od zakresu usług – od kilku godzin (np. wnętrze) do nawet dwóch dni (pełny detailing z korektą lakieru i ochroną).</p>
+    </details>
+    
+    <details class="glass p-4 rounded-xl cursor-pointer transition hover:shadow-lg">
+      <summary class="font-semibold text-lg">Czy muszę zostawić auto na noc?</summary>
+      <p class="mt-2 text-sm text-gray-300">W przypadku usług premium – tak. Przy standardowym czyszczeniu wnętrza i myciu może to być wykonane tego samego dnia.</p>
+    </details>
+
+    <details class="glass p-4 rounded-xl cursor-pointer transition hover:shadow-lg">
+      <summary class="font-semibold text-lg">Czy detailing usuwa zarysowania?</summary>
+      <p class="mt-2 text-sm text-gray-300">Tak, detailing obejmuje polerowanie lakieru, które usuwa drobne rysy. Głębsze rysy wymagają wieloetapowej korekty.</p>
+    </details>
+
+    <details class="glass p-4 rounded-xl cursor-pointer transition hover:shadow-lg">
+      <summary class="font-semibold text-lg">Czy powłoka ceramiczna jest trwała?</summary>
+      <p class="mt-2 text-sm text-gray-300">Tak, chroni lakier nawet do 2 lat, ułatwia mycie i nadaje efekt hydrofobowy. Zalecamy coroczną inspekcję.</p>
+    </details>
+
+    <details class="glass p-4 rounded-xl cursor-pointer transition hover:shadow-lg">
+      <summary class="font-semibold text-lg">Jak mogę zarezerwować termin?</summary>
+      <p class="mt-2 text-sm text-gray-300">Kliknij przycisk "Zarezerwuj termin" u góry strony lub napisz do nas przez formularz kontaktowy – odpowiemy tego samego dnia.</p>
+    </details>
+  </div>
+</section>
+
 
 
   <footer class="text-center py-6 bg-black text-sm text-gray-400">&copy; 2025 Shine Master - Wszelkie prawa zastrzeżone.</footer>
