@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shine Master - Profesjonalny Detailing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .glass {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    /* Styl sekcji przed i po czyszczeniu */
+/* Styl sekcji przed i po czyszczeniu */
+#przed-po {
+  background: linear-gradient(to right, #000000, #1a1a2e, #111111);
+}
+
+.image-compare {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.image-compare img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.image-compare .img-before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.image-compare:hover .img-before {
+  opacity: 0;
+}
+
+#przed-po h3 {
+  font-weight: 700;
+  color: #facc15;
+}
+
+#przed-po p {
+  color: #e5e7eb;
+}
