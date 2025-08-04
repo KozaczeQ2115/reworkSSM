@@ -2,79 +2,110 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cennik | Shine Master</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #0b0b0b, #1a1a1a, #0d0d0d);
+      color: #e0e0e0;
     }
     .glass {
       background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .glass:hover {
-      transform: scale(1.02);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transform: scale(1.03);
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
     }
     a {
       text-decoration: none;
     }
+    /* FAQ styles */
+    .faq-item summary {
+      cursor: pointer;
+      font-weight: 600;
+      padding: 0.75rem 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 0.5rem;
+      list-style: none;
+      outline: none;
+      transition: background-color 0.3s;
+    }
+    .faq-item summary:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .faq-item[open] summary {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .faq-item p {
+      padding: 0 1rem 1rem 1rem;
+      color: #cfcfcf;
+    }
+    /* Animated numbers */
+    .counter {
+      font-weight: 700;
+      font-size: 2.5rem;
+      color: #facc15; /* złoty */
+      text-shadow: 0 0 5px #facc15;
+    }
   </style>
 </head>
 <body>
-<section id="cennik" class="py-20 bg-gray-900 px-4 text-white">
-  <h3 class="text-4xl font-bold text-center mb-10">Cennik Usług</h3>
-  <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-    <!-- Detailing Wnętrza -->
-    <div class="glass p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300">
-      <h4 class="text-2xl font-semibold mb-4 text-yellow-400">Detailing Wnętrza</h4>
-      <ul class="mb-4 space-y-2 text-gray-200">
+
+<section id="cennik" class="py-20 px-4 max-w-7xl mx-auto">
+  <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-yellow-400 drop-shadow-md">Cennik Usług</h2>
+
+  <div class="grid md:grid-cols-3 gap-10">
+    <!-- Box usług -->
+    <div class="glass p-6 rounded-2xl shadow-xl">
+      <h3 class="text-2xl font-semibold mb-4 text-yellow-300">Detailing Wnętrza</h3>
+      <ul class="space-y-2 text-sm text-gray-300 mb-6">
         <li>Małe auta: <strong>od 200 zł</strong></li>
         <li>Średnie auta: <strong>od 250 zł</strong></li>
         <li>Duże auta / SUV: <strong>od 300 zł</strong></li>
         <li><em>Parowe czyszczenie, impregnacja tapicerki w cenie</em></li>
       </ul>
-      <a href="cennik.html" class="inline-block bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-4 py-2 rounded transition">Zamów</a>
+      <a href="#kontakt" class="block text-center bg-yellow-500 hover:bg-yellow-400 text-black font-semibold py-2 rounded-lg transition">Zamów</a>
     </div>
 
-    <!-- Polerowanie Lakieru -->
-    <div class="glass p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300">
-      <h4 class="text-2xl font-semibold mb-4 text-yellow-400">Polerowanie Lakieru</h4>
-      <ul class="mb-4 space-y-2 text-gray-200">
+    <div class="glass p-6 rounded-2xl shadow-xl">
+      <h3 class="text-2xl font-semibold mb-4 text-yellow-300">Polerowanie Lakieru</h3>
+      <ul class="space-y-2 text-sm text-gray-300 mb-6">
         <li>Jednoetapowe: <strong>od 500 zł</strong></li>
         <li>Wieloetapowe: <strong>od 800 zł</strong></li>
         <li>Pomiar grubości lakieru: <strong>w cenie</strong></li>
         <li><em>Efekt lustra gwarantowany</em></li>
       </ul>
-      <a href="cennik.html" class="inline-block bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-4 py-2 rounded transition">Zamów</a>
+      <a href="#kontakt" class="block text-center bg-yellow-500 hover:bg-yellow-400 text-black font-semibold py-2 rounded-lg transition">Zamów</a>
     </div>
 
-    <!-- Ochrona Ceramiczna -->
-    <div class="glass p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300">
-      <h4 class="text-2xl font-semibold mb-4 text-yellow-400">Ochrona Ceramiczna</h4>
-      <ul class="mb-4 space-y-2 text-gray-200">
+    <div class="glass p-6 rounded-2xl shadow-xl">
+      <h3 class="text-2xl font-semibold mb-4 text-yellow-300">Ochrona Ceramiczna</h3>
+      <ul class="space-y-2 text-sm text-gray-300 mb-6">
         <li>1-letnia powłoka: <strong>od 600 zł</strong></li>
         <li>3-letnia powłoka: <strong>od 1000 zł</strong></li>
         <li>Felgi i szyby: <strong>+150 zł</strong></li>
         <li><em>Bead effect & ochrona UV</em></li>
       </ul>
-      <a href="cennik.html" class="inline-block bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-4 py-2 rounded transition">Zamów</a>
+      <a href="#kontakt" class="block text-center bg-yellow-500 hover:bg-yellow-400 text-black font-semibold py-2 rounded-lg transition">Zamów</a>
     </div>
   </div>
 
-  <!-- Dodatkowe usługi -->
-  <div class="mt-20 max-w-4xl mx-auto">
-    <h4 class="text-3xl font-semibold text-center mb-6 text-yellow-400">Usługi dodatkowe</h4>
-    <div class="grid md:grid-cols-2 gap-6 text-gray-200">
-      <div class="glass p-4 rounded-lg">
+  <!-- Usługi dodatkowe -->
+  <div class="mt-20 max-w-4xl mx-auto text-center">
+    <h4 class="text-3xl font-semibold text-yellow-400 mb-6">Usługi Dodatkowe</h4>
+    <div class="grid md:grid-cols-2 gap-6 text-sm text-gray-300">
+      <div class="glass p-4 rounded-xl">
         <p>Pranie tapicerki punktowe: <strong>od 50 zł / miejsce</strong></p>
         <p>Odświeżenie wnętrza: <strong>od 150 zł</strong></p>
         <p>Ozonowanie: <strong>50 zł</strong></p>
       </div>
-      <div class="glass p-4 rounded-lg">
+      <div class="glass p-4 rounded-xl">
         <p>Impregnacja plastików: <strong>od 70 zł</strong></p>
         <p>Regeneracja lamp: <strong>od 120 zł</strong></p>
         <p>Mycie detailingowe szyb: <strong>od 40 zł</strong></p>
@@ -82,5 +113,93 @@
     </div>
   </div>
 </section>
+
+<!-- Animowane liczby -->
+<section class="max-w-5xl mx-auto py-20 text-center">
+  <h3 class="text-4xl font-bold text-yellow-400 mb-12">Dlaczego warto nas wybrać?</h3>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-gray-300">
+    <div>
+      <div class="counter" data-target="500">0</div>
+      <p class="mt-2 text-lg font-semibold">Zadowolonych klientów</p>
+    </div>
+    <div>
+      <div class="counter" data-target="10">0</div>
+      <p class="mt-2 text-lg font-semibold">Lat doświadczenia</p>
+    </div>
+    <div>
+      <div class="counter" data-target="1500">0</div>
+      <p class="mt-2 text-lg font-semibold">Wykonanych usług</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="max-w-5xl mx-auto py-20 px-4">
+  <h3 class="text-4xl font-bold text-yellow-400 mb-12 text-center">Najczęściej zadawane pytania (FAQ)</h3>
+  <div class="space-y-4">
+    <details class="faq-item glass rounded-lg p-4">
+      <summary>Jak długo trwa detailing wnętrza?</summary>
+      <p>Standardowa usługa detailingowa wnętrza trwa około 3-5 godzin, w zależności od stanu pojazdu.</p>
+    </details>
+    <details class="faq-item glass rounded-lg p-4">
+      <summary>Czy podczas polerowania lakieru używacie bezpiecznych metod?</summary>
+      <p>Tak, korzystamy tylko z profesjonalnych, bezpiecznych technologii i preparatów, aby nie uszkodzić lakieru.</p>
+    </details>
+    <details class="faq-item glass rounded-lg p-4">
+      <summary>Jak dbać o powłokę ceramiczną po aplikacji?</summary>
+      <p>Zalecamy regularne mycie ręczne i unikanie agresywnych środków chemicznych, aby powłoka ceramiczna długo utrzymała swoje właściwości.</p>
+    </details>
+    <details class="faq-item glass rounded-lg p-4">
+      <summary>Czy oferujecie usługi mobilne?</summary>
+      <p>Tak, dojeżdżamy do klienta na terenie miasta i okolic. Szczegóły ustalamy indywidualnie.</p>
+    </details>
+  </div>
+</section>
+
+<!-- Mapa -->
+<section class="max-w-5xl mx-auto py-20 px-4">
+  <h3 class="text-4xl font-bold text-yellow-400 mb-12 text-center">Nasza lokalizacja</h3>
+  <div class="rounded-xl overflow-hidden shadow-lg glass">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2441.105885756966!2d21.012228316041753!3d52.2296759797841!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471eccf7dfc39a6b%3A0x34f8d25261431ec5!2sWarszawa%2C%20Polska!5e0!3m2!1spl!2sus!4v1691168112345!5m2!1spl!2sus" 
+      width="100%" 
+      height="400" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Mapa lokalizacji Shine Master"
+    ></iframe>
+  </div>
+</section>
+
+<!-- Sekcja kontaktowa -->
+<section id="kontakt" class="text-center py-12 text-sm text-gray-400">
+  <p>Masz pytania? Skontaktuj się z nami: 
+    <a href="mailto:kontakt@shinemaster.pl" class="text-yellow-400 hover:underline">kontakt@shinemaster.pl</a> lub tel. 
+    <a href="tel:+48123456789" class="text-yellow-400 hover:underline">+48 123 456 789</a>
+  </p>
+</section>
+
+<script>
+  // Animacja liczb
+  const counters = document.querySelectorAll('.counter');
+  counters.forEach(counter => {
+    counter.innerText = '0';
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-target');
+      const count = +counter.innerText;
+      const increment = target / 200; // szybkość animacji
+      if (count < target) {
+        counter.innerText = Math.ceil(count + increment);
+        setTimeout(updateCount, 10);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    updateCount();
+  });
+</script>
+
 </body>
 </html>
