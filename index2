@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shine Master - Detailing Kutno</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #111;
+      color: #eee;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: #222;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.7);
+    }
+
+    header h1 {
+      font-weight: 600;
+      color: #f4c10f;
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      color: #eee;
+      margin-left: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: #f4c10f;
+    }
+
+    nav a::after {
+      content: '';
+      display: block;
+      height: 2px;
+      width: 0;
+      background: #f4c10f;
+      transition: width 0.3s ease;
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      height: 90vh;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+      color: #f4c10f;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #f4c10f;
+      animation: slideDown 1s ease forwards;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 40px;
+      font-weight: 300;
+      animation: fadeIn 3s ease forwards;
+    }
+
+    .btn-primary {
+      background: #f4c10f;
+      border: none;
+      padding: 15px 40px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #111;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 0 15px #f4c10f;
+      animation: pulse 2s infinite;
+    }
+
+    .btn-primary:hover {
+      background: #fff;
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #fff;
+    }
+
+    main {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section {
+      margin-bottom: 80px;
+    }
+
+    h3 {
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: #f4c10f;
+      text-align: center;
+      letter-spacing: 1.5px;
+    }
+
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .service-card {
+      background: #222;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(244,193,15,0.3);
+      padding: 25px;
+      width: 280px;
+      text-align: center;
+      color: #eee;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s forwards;
+    }
+
+    .service-card:nth-child(1) {
+      animation-delay: 0.3s;
+    }
+    .service-card:nth-child(2) {
+      animation-delay: 0.6s;
+    }
+    .service-card:nth-child(3) {
+      animation-delay: 0.9s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 0 30px #f4c10f;
+    }
+
+    .service-card h4 {
+      margin-bottom: 15px;
+      color: #f4c10f;
+    }
+
+    .service-card p {
+      font-weight: 300;
+      font-size: 1rem;
+    }
+
+    .pricing {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: center;
+    }
+
+    .price-card {
+      background: #111;
+      border: 2px solid #f4c10f;
+      border-radius: 20px;
+      padding: 30px;
+      width: 260px;
+      color: #eee;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(244,193,15,0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s forwards;
+    }
+
+    .price-card:nth-child(1) {
+      animation-delay: 0.3s;
+    }
+    .price-card:nth-child(2) {
+      animation-delay: 0.6s;
+    }
+    .price-card:nth-child(3) {
+      animation-delay: 0.9s;
+    }
+
+    .price-card:hover {
+      transform: translateY(-10px) scale(1.07);
+      box-shadow: 0 0 40px #f4c10f;
+    }
+
+    .price-card h4 {
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: #f4c10f;
+    }
+
+    .price-card .price {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 0 10px #f4c10f;
+    }
+
+    .price-card p {
+      font-weight: 300;
+    }
+
+    .contact {
+      max-width: 500px;
+      margin: 0 auto;
+      background: #222;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(244,193,15,0.5);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s forwards;
+      animation-delay: 1.2s;
+    }
+
+    .contact h3 {
+      margin-bottom: 25px;
+    }
+
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact input,
+    .contact textarea {
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      resize: none;
+    }
+
+    .contact button {
+      background: #f4c10f;
+      border: none;
+      padding: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #111;
+      border-radius: 30px;
+      transition: background 0.3s ease;
+      box-shadow: 0 0 15px #f4c10f;
+    }
+
+    .contact button:hover {
+      background: #fff;
+      box-shadow: 0 0 25px #fff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #222;
+      color: #aaa;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes slideDown {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes pulse {
+      0%, 100% {box-shadow: 0 0 15px #f4c10f;}
+      50% {box-shadow: 0 0 30px #fff;}
+    }
+
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .services, .pricing {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Shine Master</h1>
+  <nav>
+    <a href="#services">Usługi</a>
+    <a href="#pricing">Cennik</a>
+    <a href="#contact">Kontakt</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2>Profesjonalny detailing samochodowy w Kutnie</h2>
+    <p>Odzyskaj blask swojego auta z Shine Master — ekspertami w pielęgnacji pojazdów.</p>
+    <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Skontaktuj się</button>
+  </div>
+</section>
+
+<main>
+  <section id="services">
+    <h3>Nasze Usługi</h3>
+    <div class="services">
+      <div class="service-card">
+        <h4>Mycie detailingowe</h4>
+        <p>Dokładne czyszczenie zewnętrzne i wewnętrzne pojazdu.</p>
+      </div>
+      <div class="service-card">
+        <h4>Renowacja lakieru</h4>
+        <p>Usuwanie rys i przywracanie głębi koloru.</p>
+      </div>
+      <div class="service-card">
+        <h4>Woskowanie i zabezpieczenie</h4>
+        <p>Ochrona lakieru na wiele miesięcy.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <h3>Cennik</h3>
+    <div class="pricing">
+      <div class="price-card">
+        <h4>Mycie detailingowe</h4>
+        <div class="price">150 zł</div>
+        <p>Pełne mycie zewnętrzne i odkurzanie wnętrza</p>
+      </div>
+      <div class="price-card">
+        <h4>Renowacja lakieru</h4>
+        <div class="price">500 zł</div>
+        <p>Usuwanie rys i polerowanie</p>
+      </div>
+      <div class="price-card">
+        <h4>Woskowanie i zabezpieczenie</h4>
+        <div class="price">250 zł</div>
+        <p>Nałożenie wosku ochronnego</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h3>Skontaktuj się z nami</h3>
+    <form>
+      <input type="text" placeholder="Imię i nazwisko" required />
+      <input type="email" placeholder="Adres email" required />
+      <textarea rows="5" placeholder="Wiadomość" required></textarea>
+      <button type="submit">Wyślij</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Shine Master Kutno. Wszystkie prawa zastrzeżone.
+</footer>
+
+</body>
+</html>
