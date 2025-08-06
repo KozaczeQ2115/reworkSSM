@@ -78,14 +78,49 @@
     </nav>
   </header>
 
-  <section class="text-center py-20 px-4">
-    <h2 class="text-5xl font-bold mb-4">Detailing jakiego jeszcze nie widziałeś</h2>
-    <div class="text-2xl text-yellow-400 h-10">
-      <span id="typed-text"></span>
+<section class="text-center py-20 px-4 relative">
+  <h2 class="text-5xl font-bold mb-4 text-yellow-400 drop-shadow-md">
+    Detailing jakiego jeszcze nie widziałeś
+  </h2>
+
+  <div class="text-2xl text-yellow-300 h-10">
+    <span id="typed-text"></span>
+  </div>
+
+  <p class="mt-4 text-lg text-gray-400">Zadbamy o każdy detal Twojego auta — tak, jak nikt inny.</p>
+
+  <div class="mt-10 flex flex-wrap justify-center gap-6 text-yellow-400 text-sm font-semibold">
+    <div class="flex items-center space-x-2"><span>⭐</span><span>10 lat doświadczenia</span></div>
+    <div class="flex items-center space-x-2"><span>🔧</span><span>Profesjonalny sprzęt</span></div>
+    <div class="flex items-center space-x-2"><span>🧽</span><span>Bezpieczna chemia</span></div>
+    <div class="flex items-center space-x-2"><span>🚗</span><span>Auto zastępcze</span></div>
+  </div>
+  
+  <!-- 🏆 Nagrody -->
+  <div class="mt-12">
+    <h4 class="text-xl font-semibold text-yellow-400 mb-6">Nasze nagrody</h4>
+    <div class="flex flex-wrap justify-center gap-8 text-sm text-gray-300">
+      <div class="flex flex-col items-center space-y-2">
+        <img src="laureate_medal_2025.png" alt="Nagroda Detailing Roku" class="w-16 h-16 object-contain">
+        <span>Orły Motoryzacji - Laureat 2025</span>
+      </div>
+      <div class="flex flex-col items-center space-y-2">
+        <img src="jestem-top-3.png" alt="Certyfikat jakości" class="w-16 h-16 object-contain">
+        <span>TOP 3 Najlepsze auto spa w Kutnie</span>
+      </div>
     </div>
-    <a href="kontakt.html" class="mt-10 bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-6 py-3 rounded-xl transition transform hover:scale-105 inline-block text-center">
-  Umów się teraz
-</a>
+  </div>
+
+  <!-- ✅ PRZYCISK osobno pod spodem -->
+  <div class="mt-12">
+    <a href="kontakt.html"
+       class="bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-6 py-3 rounded-xl transition transform hover:scale-105 inline-block">
+      Umów się teraz
+    </a>
+  </div>
+</section>
+
+
 
   </section>
 
@@ -183,7 +218,10 @@
 
 
 <section id="galeria" class="py-20 px-4">
-  <h3 class="text-4xl font-bold text-center mb-10 text-white">Galeria Prac</h3>
+<h3 class="text-4xl font-extrabold text-center mb-10 text-yellow-400 drop-shadow-lg tracking-wide">
+  Galeria Prac
+</h3>
+
   <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
     <img src="https://placehold.co/300x200" class="rounded-xl hover:scale-105 transition duration-300 cursor-pointer" alt="Auto 1" />
     <img src="https://placehold.co/300x200" class="rounded-xl hover:scale-105 transition duration-300 cursor-pointer" alt="Auto 2" />
@@ -286,354 +324,203 @@
 </section>
 
 
-  <section id="przed-po" class="py-20 px-4">
-  <h3 class="text-5xl md:text-6xl font-extrabold text-center mb-12 text-yellow-400 drop-shadow-md tracking-wide">
-  Przed i Po Czyszczeniu
-</h3>
+<section id="przed-po" class="py-20 px-4">
+  <h3 class="text-5xl md:text-6xl font-extrabold text-center mb-4 text-yellow-400 drop-shadow-md tracking-wide">
+    Przed i Po Czyszczeniu
+  </h3>
+  <p class="max-w-3xl mx-auto text-center mb-12 text-gray-700 text-lg">
+    Zobacz różnicę, jaką robi profesjonalne czyszczenie. Przesuń myszką lub kliknij, aby odkryć efekt metamorfozy!
+  </p>
   <div class="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
     <!-- Box 1 -->
-    <div class="relative group overflow-hidden rounded-xl shadow-xl">
-      <img src="przed.jpg" alt="Przed czyszczeniem" class="w-full h-full object-cover group-hover:opacity-0 transition duration-500">
-      <img src="po.jpg" alt="Po czyszczeniu" class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition duration-500">
-      <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 px-4 py-2 text-sm">Najedź, aby zobaczyć efekt</div>
+    <div class="relative group overflow-hidden rounded-xl shadow-xl cursor-pointer">
+      <img src="przed.jpg" alt="Przed czyszczeniem" class="w-full h-full object-cover group-hover:opacity-0 transition-opacity duration-500 ease-in-out">
+      <img src="po.jpg" alt="Po czyszczeniu" class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
+      <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 px-4 py-2 text-sm text-white font-semibold">
+        Najedź, aby zobaczyć efekt
+      </div>
     </div>
 
     <!-- Box 2 -->
-    <div class="relative group overflow-hidden rounded-xl shadow-xl">
-      <img src="img/przed2.jpg" alt="Przed czyszczeniem" class="w-full h-full object-cover group-hover:opacity-0 transition duration-500">
-      <img src="img/po2.jpg" alt="Po czyszczeniu" class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition duration-500">
-      <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 px-4 py-2 text-sm">Najedź, aby zobaczyć efekt</div>
+    <div class="relative group overflow-hidden rounded-xl shadow-xl cursor-pointer">
+      <img src="img/przed2.jpg" alt="Przed czyszczeniem" class="w-full h-full object-cover group-hover:opacity-0 transition-opacity duration-500 ease-in-out">
+      <img src="img/po2.jpg" alt="Po czyszczeniu" class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
+      <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 px-4 py-2 text-sm text-white font-semibold">
+        Najedź, aby zobaczyć efekt
+      </div>
     </div>
   </div>
 </section>
 
-<section class="py-20 px-4">
-  <h3 class="text-4xl font-bold text-center mb-10 text-yellow-400">Przebieg czyszczenia samochodu</h3>
+<section id="kontakt" class="py-24 px-6 max-w-5xl mx-auto my-16 border-4 border-yellow-400 rounded-3xl shadow-lg">
+  <h3 class="text-5xl font-extrabold text-center mb-16 tracking-wide uppercase bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 bg-clip-text text-transparent drop-shadow-lg">
+    Skontaktuj się z nami
+  </h3>
 
-  <div class="timeline-container max-w-4xl mx-auto relative">
-    <!-- Animowana linia z gradientem -->
-    <div class="timeline-line animated"></div>
-
-    <!-- Kroki procesu -->
-    <div class="timeline-steps flex justify-between relative z-20">
-      <div class="timeline-step flex flex-col items-center relative cursor-pointer group" data-step="0">
-        <div class="step-circle active"></div>
-        <span>Mycie</span>
-      </div>
-      <div class="timeline-step flex flex-col items-center relative cursor-pointer group" data-step="1">
-        <div class="step-circle"></div>
-        <span>Polerowanie</span>
-      </div>
-      <div class="timeline-step flex flex-col items-center relative cursor-pointer group" data-step="2">
-        <div class="step-circle"></div>
-        <span>Zabezpieczenie</span>
-      </div>
-      <div class="timeline-step flex flex-col items-center relative cursor-pointer group" data-step="3">
-        <div class="step-circle"></div>
-        <span>Odbiór auta</span>
-      </div>
-    </div>
-
-    <!-- Opinia klienta -->
-    <div id="reviewsCarousel" class="mt-16 max-w-2xl mx-auto text-yellow-300 text-center">
-      <p>"Fantastyczna jakość i dbałość o szczegóły! Auto wygląda jak nowe po myciu i polerowaniu."</p>
-      <div class="author mt-4 font-semibold italic">- Jan Kowalski</div>
-    </div>
-  </div>
-
-  <style>
-    /* Linia z gradientem i animacją */
-    .timeline-line {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 6px;
-      background: linear-gradient(90deg, #facc15 0%, #ffd54f 50%, #facc15 100%);
-      border-radius: 3px;
-      overflow: hidden;
-      transform: translateY(-50%);
-      z-index: 10;
-    }
-
-    /* Animacja przesuwającego się gradientu */
-    @keyframes flowGradient {
-      0% {
-        background-position: 0% 50%;
-      }
-      100% {
-        background-position: 200% 50%;
-      }
-    }
-
-    .timeline-line.animated {
-      background-size: 200% 100%;
-      animation: flowGradient 4s linear infinite;
-    }
-
-    /* Kółeczka */
-    .step-circle {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: radial-gradient(circle at center, #facc15, #b28704);
-      border: 3px solid white;
-      box-shadow:
-        0 0 8px #facc15,
-        inset 0 0 10px #ffeb7f;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      z-index: 10;
-    }
-
-    .step-circle::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: rgba(250, 204, 21, 0.2);
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: -1;
-    }
-
-    /* Pulsowanie aktywnego kółka */
-    .step-circle.active {
-      transform: scale(1.3);
-      box-shadow:
-        0 0 15px #facc15,
-        0 0 30px #facc15,
-        inset 0 0 15px #fff9b3;
-    }
-
-    .step-circle.active::after {
-      opacity: 1;
-      animation: pulseGlow 2.5s ease-in-out infinite;
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% {
-        opacity: 0.3;
-        transform: translate(-50%, -50%) scale(1);
-      }
-      50% {
-        opacity: 0.6;
-        transform: translate(-50%, -50%) scale(1.1);
-      }
-    }
-
-    /* Teksty pod kółeczkami */
-    .timeline-step span {
-      margin-top: 12px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: #facc15;
-      user-select: none;
-    }
-
-    /* Opinie */
-    #reviewsCarousel p {
-      font-size: 1.125rem;
-      line-height: 1.5;
-    }
-    #reviewsCarousel .author {
-      margin-top: 1rem;
-      font-weight: 700;
-      text-align: right;
-      font-style: italic;
-      color: #facc15;
-    }
-  </style>
-
-  <script>
-    // Prosta funkcja do zmiany aktywnego kroku i opinii
-    const steps = document.querySelectorAll('.timeline-step');
-    const circles = document.querySelectorAll('.step-circle');
-    const reviewText = document.querySelector('#reviewsCarousel p');
-    const reviewAuthor = document.querySelector('#reviewsCarousel .author');
-
-    const reviews = [
-      {
-        text: '"Fantastyczna jakość i dbałość o szczegóły! Auto wygląda jak nowe po myciu i polerowaniu."',
-        author: '- Jan Kowalski'
-      },
-      {
-        text: '"Polerowanie było perfekcyjne, a samochód błyszczy jak nigdy wcześniej!"',
-        author: '- Anna Nowak'
-      },
-      {
-        text: '"Zabezpieczenie lakieru na najwyższym poziomie. Polecam każdemu!"',
-        author: '- Marek Wiśniewski'
-      },
-      {
-        text: '"Szybki i profesjonalny odbiór auta. Jestem zachwycony usługą!"',
-        author: '- Katarzyna K.'
-      }
-    ];
-
-    steps.forEach((step, index) => {
-      step.addEventListener('click', () => {
-        // Reset aktywnych
-        circles.forEach(c => c.classList.remove('active'));
-        circles[index].classList.add('active');
-
-        // Podmiana opinii
-        reviewText.textContent = reviews[index].text;
-        reviewAuthor.textContent = reviews[index].author;
-      });
-    });
-  </script>
-</section>
-
-
-
-<section id="kontakt" class="py-24 px-6">
-  <h3 class="text-5xl font-extrabold text-center mb-16 tracking-wide">Skontaktuj się z nami</h3>
-  
-  <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-    
-    <!-- Tekst / info -->
-    <div class="space-y-6">
-      <p class="text-lg leading-relaxed max-w-md mx-auto md:mx-0">
-        Masz pytania? Chcesz umówić się na usługę? Napisz do nas — odpowiemy jak najszybciej!
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-gray-100">
+    <!-- Adres -->
+    <div class="flex flex-col items-center md:items-start space-y-4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-yellow-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 11c1.657 0 3-1.343 3-3S13.657 5 12 5s-3 1.343-3 3 1.343 3 3 3z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4.5 8-10a8 8 0 10-16 0c0 5.5 8 10 8 10z" />
+      </svg>
+      <h4 class="text-xl font-semibold mb-1">Adres</h4>
+      <p class="text-center md:text-left leading-relaxed max-w-xs">
+        ul. jak znajde garaz to kurwa bedzie<br>
+        99-300 Kutno<br>
+        Polska
       </p>
-      <div class="space-y-4 max-w-md mx-auto md:mx-0">
-       <div class="space-y-4 max-w-md mx-auto md:mx-0">
-  <div class="flex items-center space-x-3">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-18 8h18"/>
-    </svg>
-    <a href="mailto:kontakt@twojafirma.pl" class="hover:text-yellow-300 transition">kontakt@twojafirma.pl</a>
+    </div>
+
+    <!-- Telefon -->
+    <div class="flex flex-col items-center md:items-start space-y-4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-yellow-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h2l3.6 7.59-1.35 2.44a1 1 0 00.84 1.57H19" />
+      </svg>
+      <h4 class="text-xl font-semibold mb-1">Telefon</h4>
+      <a href="tel:+48724424290" class="text-yellow-500 hover:text-yellow-400 transition text-lg font-medium">+48 724 424 290</a>
+      <a href="tel:+48725392005" class="text-yellow-500 hover:text-yellow-400 transition text-lg font-medium">+48 725 392 005</a>
+    </div>
+
+    <!-- E-mail -->
+    <div class="flex flex-col items-center md:items-start space-y-4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-yellow-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-18 8h18" />
+      </svg>
+      <h4 class="text-xl font-semibold mb-1">E-mail</h4>
+      <a href="mailto:kontakt@twojafirma.pl" class="text-yellow-500 hover:text-yellow-400 transition text-lg font-medium">shinemastermobile@gmail.com</a>
+    </div>
   </div>
-  <div class="flex items-center space-x-3">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h2l3.6 7.59-1.35 2.44a1 1 0 00.84 1.57H19"/>
-    </svg>
-    <a href="tel:+48724424290" class="hover:text-yellow-300 transition">+48724 424 290</a>
+</section>
+
+<footer class="bg-black text-gray-400 text-sm py-12 px-6">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+    
+    <!-- Logo & Copyright -->
+    <div class="space-y-4 text-center md:text-left">
+      <h2 class="text-2xl font-extrabold text-yellow-400">Shine Master</h2>
+      <p class="text-gray-500">&copy; 2025 Shine Master</p>
+      <p class="text-gray-500">Wszelkie prawa zastrzeżone.</p>
+      <div class="flex justify-center md:justify-start gap-4 mt-4 text-yellow-400">
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="hover:text-yellow-300 transition">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54v-2.89h2.54v-2.205c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.196 2.238.196v2.463h-1.26c-1.243 0-1.63.77-1.63 1.562v1.874h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 16.991 22 12z"/></svg>
+        </a>
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="hover:text-yellow-300 transition">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14.86 4.48 4.48 0 001.98-2.48 9.06 9.06 0 01-2.88 1.1 4.52 4.52 0 00-7.7 4.13A12.82 12.82 0 013 4.92a4.51 4.51 0 001.4 6.03 4.43 4.43 0 01-2.05-.56v.06a4.51 4.51 0 003.62 4.43 4.52 4.52 0 01-2.04.08 4.52 4.52 0 004.21 3.13A9 9 0 013 19.54 12.81 12.81 0 009 21c7.55 0 11.68-6.25 11.68-11.67 0-.18-.01-.35-.02-.52A8.18 8.18 0 0023 3z"/></svg>
+        </a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="hover:text-yellow-300 transition">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 2A3.75 3.75 0 004 7.75v8.5A3.75 3.75 0 007.75 20h8.5a3.75 3.75 0 003.75-3.75v-8.5A3.75 3.75 0 0016.25 4h-8.5zm8.25 1.25a1 1 0 110 2 1 1 0 010-2zm-4.25 2a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6z"/></svg>
+        </a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="hover:text-yellow-300 transition">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v6h-4v-6a2 2 0 00-4 0v6h-4v-12h4v2a4 4 0 014-2zM2 9h4v12H2zM4 4a2 2 0 110 4 2 2 0 010-4z"/></svg>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Szybkie linki -->
+    <div>
+      <h4 class="text-yellow-400 font-semibold mb-4">Szybkie linki</h4>
+      <ul class="space-y-3">
+        <li><a href="/" class="hover:text-yellow-300 transition">Strona główna</a></li>
+        <li><a href="/uslugi" class="hover:text-yellow-300 transition">Usługi</a></li>
+        <li><a href="/cennik" class="hover:text-yellow-300 transition">Cennik</a></li>
+        <li><a href="/galeria" class="hover:text-yellow-300 transition">Galeria</a></li>
+        <li><a href="/kontakt" class="hover:text-yellow-300 transition">Kontakt</a></li>
+      </ul>
+    </div>
+    
+    <!-- Kontakt -->
+    <div>
+      <h4 class="text-yellow-400 font-semibold mb-4">Kontakt</h4>
+      <ul class="space-y-3">
+        <li><span class="font-semibold">Telefon:</span> <a href="tel:+48724424290" class="hover:text-yellow-300 transition">+48 724 424 290</a></li>
+        <li><span class="font-semibold">E-mail:</span> <a href="mailto:kontakt@twojafirma.pl" class="hover:text-yellow-300 transition">kontakt@twojafirma.pl</a></li>
+        <li><span class="font-semibold">Adres:</span> ul. Krzywa jak twoja matka, 99-300 Kutno</li>
+      </ul>
+    </div>
+
+    <!-- Newsletter -->
+<div>
+  <h4 class="text-yellow-400 font-semibold mb-4">Gdzie jesteśmy?</h4>
+  <div class="rounded-lg overflow-hidden shadow-lg border border-yellow-400">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2443.8193499024525!2d21.01222947640274!3d52.22967595697102!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc66950240e1%3A0xcea3a8d6dbd90279!2sWarszawa!5e0!3m2!1spl!2spl!4v1696862092393"
+      width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
   </div>
 </div>
 
-      </div>
-    </div>
-    
-    <!-- Formularz -->
-    <form class="glass bg-black bg-opacity-70 p-10 rounded-3xl shadow-2xl space-y-8 max-w-lg mx-auto">
-      <div>
-        <label for="name" class="block text-sm font-semibold mb-2 tracking-wide">Imię i nazwisko</label>
-        <div class="relative">
-          <input type="text" id="name" name="name" placeholder="Jan Kowalski" required
-                 class="w-full p-4 pl-12 rounded-xl text-black focus:outline-none focus:ring-4 focus:ring-yellow-400 transition" />
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-4 top-1/2 transform -translate-y-1/2 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A7 7 0 1119.88 6.196M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-          </svg>
-        </div>
-      </div>
-      
-      <div>
-        <label for="email" class="block text-sm font-semibold mb-2 tracking-wide">Adres e-mail</label>
-        <div class="relative">
-          <input type="email" id="email" name="email" placeholder="jan@example.com" required
-                 class="w-full p-4 pl-12 rounded-xl text-black focus:outline-none focus:ring-4 focus:ring-yellow-400 transition" />
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-4 top-1/2 transform -translate-y-1/2 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12h.01M12 12h.01M8 12h.01M21 12c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8z" />
-          </svg>
-        </div>
-      </div>
-      
-      <div>
-        <label for="message" class="block text-sm font-semibold mb-2 tracking-wide">Wiadomość</label>
-        <textarea id="message" name="message" rows="5" placeholder="Twoja wiadomość..." required
-                  class="w-full p-4 rounded-xl text-black resize-none focus:outline-none focus:ring-4 focus:ring-yellow-400 transition"></textarea>
-      </div>
-      
-      <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-extrabold text-lg py-4 rounded-3xl transition-transform transform hover:scale-105 shadow-lg">
-        Wyślij wiadomość
-      </button>
-    </form>
-  </div>
-</section>
-
-
-<section id="faq" class="py-20 px-4">
-  <h3 class="text-4xl font-bold text-center mb-10">Najczęściej zadawane pytania</h3>
-  <div class="max-w-4xl mx-auto space-y-6">
-    <details class="glass p-4 rounded-xl cursor-pointer transition hover:shadow-lg">
-      <summary class="font-semibold text-lg">Jak długo trwa pełny detailing?</summary>
-      <p class="mt-2 text-sm text-gray-300">W zależności od zakresu usług – od kilku godzin (np. wnętrze) do nawet dwóch dni (pełny detailing z korektą lakieru i ochroną).</p>
-    </details>
-    
-    <details class="glass p-4 rounded-xl cursor-pointer transition hover:shadow-lg">
-      <summary class="font-semibold text-lg">Czy muszę zostawić auto na noc?</summary>
-      <p class="mt-2 text-sm text-gray-300">W przypadku usług premium – tak. Przy standardowym czyszczeniu wnętrza i myciu może to być wykonane tego samego dnia.</p>
-    </details>
-
-    <details class="glass p-4 rounded-xl cursor-pointer transition hover:shadow-lg">
-      <summary class="font-semibold text-lg">Czy detailing usuwa zarysowania?</summary>
-      <p class="mt-2 text-sm text-gray-300">Tak, detailing obejmuje polerowanie lakieru, które usuwa drobne rysy. Głębsze rysy wymagają wieloetapowej korekty.</p>
-    </details>
-
-    <details class="glass p-4 rounded-xl cursor-pointer transition hover:shadow-lg">
-      <summary class="font-semibold text-lg">Czy powłoka ceramiczna jest trwała?</summary>
-      <p class="mt-2 text-sm text-gray-300">Tak, chroni lakier nawet do 2 lat, ułatwia mycie i nadaje efekt hydrofobowy. Zalecamy coroczną inspekcję.</p>
-    </details>
-
-    <details class="glass p-4 rounded-xl cursor-pointer transition hover:shadow-lg">
-      <summary class="font-semibold text-lg">Jak mogę zarezerwować termin?</summary>
-      <p class="mt-2 text-sm text-gray-300">Kliknij przycisk "Zarezerwuj termin" u góry strony lub napisz do nas przez formularz kontaktowy – odpowiemy tego samego dnia.</p>
-    </details>
-  </div>
-</section>
-
-
-
-<footer class="bg-black text-gray-400 text-sm py-8 px-4">
-  <div class="max-w-6xl mx-auto text-center space-y-2">
-    <p class="text-base text-white font-semibold">&copy; 2025 Shine Master</p>
-    <p class="text-xs text-gray-500">Wszelkie prawa zastrzeżone.</p>
-    <div class="flex justify-center gap-4 pt-2">
-      <a href="/polityka-prywatnosci" class="hover:text-white transition-colors duration-300">Polityka prywatności</a>
-      <a href="/kontakt" class="hover:text-white transition-colors duration-300">Kontakt</a>
-    </div>
-  </div>
 </footer>
 
 
-  <script>
-    // Animacja typed.js
-    const typed = new Typed('#typed-text', {
-      strings: ['Profesjonalna pielęgnacja aut', 'Polerowanie lakieru', 'Detailing klasy premium', 'Najlepsza jakość w Kutnie', 'Najniższe ceny - profesjonalne podejście'],
-      typeSpeed: 50,
-      backSpeed: 30,
-      loop: true
-    });
+<!-- Przycisk "Do góry" -->
+<button id="scrollTopBtn" 
+  style="
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    display: none;
+    background-color: #facc15; /* żółty */
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+  " 
+  aria-label="Wróć na górę"
+  title="Wróć na górę"
+>
+  ▲
+</button>
 
-    // Wykres Chart.js
-    const ctx = document.getElementById('reviewsChart').getContext('2d');
-    const chart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['2021', '2022', '2023', '2024', '2025'],
-        datasets: [{
-          label: 'Pozytywne opinie (%)',
-          data: [85, 90, 95, 97, 99],
-          backgroundColor: 'rgba(234, 179, 8, 0.8)',
-          borderRadius: 10
-        }]
-      },
-      options: {
-        responsive: true,
-        scales: {
-          y: {
-            beginAtZero: true,
-            max: 100
-          }
-        }
-      }
-    });
+<script>
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+  window.addEventListener('scroll', () => {
+    // Sprawdź, czy użytkownik jest na dole strony
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
+
+    // Jeśli jesteśmy blisko dołu (np. w 50px od dołu)
+    if (scrollTop + windowHeight >= docHeight - 50) {
+      scrollTopBtn.style.display = 'block';
+      scrollTopBtn.style.opacity = '1';
+    } else {
+      scrollTopBtn.style.opacity = '0';
+      setTimeout(() => {
+        scrollTopBtn.style.display = 'none';
+      }, 300);
+    }
+  });
+
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+</script>
+
+
+<script>
+  const typed = new Typed('#typed-text', {
+    strings: [
+      'Profesjonalna pielęgnacja aut',
+      'Polerowanie lakieru',
+      'Detailing klasy premium',
+      'Najlepsza jakość w Kutnie',
+      'Najniższe ceny – profesjonalne podejście'
+    ],
+    typeSpeed: 45,
+    backSpeed: 20,
+    backDelay: 1800, // ⏱️ czas pauzy przed cofaniem
+    startDelay: 500, // ⏱️ opóźnienie startu animacji
+    smartBackspace: true, // tylko różnice
+    loop: true,
+    showCursor: true,
+    cursorChar: '|'
+  });
+</script>
   </script>
 </body>
 </html>
