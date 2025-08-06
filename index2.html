@@ -335,6 +335,17 @@
         align-items: center;
       }
     }
+      #intro {
+      transition: opacity 1s ease;
+    }
+    #intro svg text {
+      animation: draw 2s ease forwards;
+    }
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
 
   </style>
 </head>
@@ -347,8 +358,18 @@
     <a href="#pricing">Cennik</a>
     <a href="#contact">Kontakt</a>
   </nav>
-</header>
+</header>  
 
+<div id="intro" class="fixed inset-0 bg-black z-50 flex items-center justify-center">
+  <svg width="400" height="100" viewBox="0 0 400 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+          font-size="32" font-family="Poppins, sans-serif" fill="none"
+          stroke="#facc15" stroke-width="1" stroke-dasharray="800" stroke-dashoffset="800">
+      Shine Master
+    </text>
+  </svg>
+</div>
+  
 <section class="hero">
   <div class="hero-content">
     <h2>Profesjonalny detailing samochodowy w Kutnie</h2>
@@ -484,6 +505,32 @@
 <footer>
   &copy; 2025 Shine Master Kutno. Wszystkie prawa zastrzeżone.
 </footer>
+  // Animowane liczby
+  const counters = document.querySelectorAll('.counter');
+  counters.forEach(counter => {
+    counter.innerText = '0';
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-target');
+      const count = +counter.innerText;
+      const increment = target / 150;
+      if (count < target) {
+        counter.innerText = Math.ceil(count + increment);
+        setTimeout(updateCount, 10);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    updateCount();
+  });
 
+  // Ukryj intro po animacji
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const intro = document.getElementById('intro');
+      intro.classList.add('opacity-0');
+      setTimeout(() => intro.remove(), 1000);
+    }, 2200);
+  });
+</script>
 </body>
 </html>
