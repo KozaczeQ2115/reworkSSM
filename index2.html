@@ -358,23 +358,96 @@
 </section>
 
 <main>
-  <section id="services">
-    <h3>Nasze Usługi</h3>
-    <div class="services">
-      <div class="service-card">
-        <h4>Mycie detailingowe</h4>
-        <p>Dokładne czyszczenie zewnętrzne i wewnętrzne pojazdu.</p>
-      </div>
-      <div class="service-card">
-        <h4>Renowacja lakieru</h4>
-        <p>Usuwanie rys i przywracanie głębi koloru.</p>
-      </div>
-      <div class="service-card">
-        <h4>Woskowanie i zabezpieczenie</h4>
-        <p>Ochrona lakieru na wiele miesięcy.</p>
-      </div>
+<section id="uslugi" class="py-20 px-4">
+  <h3 class="text-4xl font-bold text-center mb-10">Kliknij na auto, aby odkryć usługi</h3>
+  <div class="relative max-w-4xl mx-auto">
+    <img src="https://narzedzia.elektromobilni.pl/generated-images/file/1000x500/893d88772d97f85ccde1bc642ee48f8a.png/Tesla_Model_3_bialy_bok.png" alt="Samochód" class="w-full rounded-xl shadow-2xl">
+
+    <!-- Klikalne punkty -->
+    <button onclick="showService('wnetrze', this)" class="absolute top-[50%] left-[38%] bg-yellow-500 hover:bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg transition">Wnętrze</button>
+    <button onclick="showService('karoseria', this)" class="absolute top-[30%] left-[70%] bg-yellow-500 hover:bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg transition">Lakier</button>
+    <button onclick="showService('ceramika', this)" class="absolute top-[65%] left-[75%] bg-yellow-500 hover:bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg transition">Ceramika</button>
+    <button onclick="showService('felgi', this)" class="absolute top-[70%] left-[20%] bg-yellow-500 hover:bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg transition">Felgi</button>
+  </div>
+
+  <!-- Kontener z ofertą -->
+  <div id="service-details" class="relative mt-10 max-w-3xl mx-auto transition-all duration-500 opacity-0 scale-95 pointer-events-none">
+    <button onclick="hideService()" class="absolute top-2 right-2 text-white text-2xl font-bold hover:text-yellow-400">&times;</button>
+    <div class="glass p-6 rounded-xl shadow-xl" id="service-content">
+      <!-- dynamiczna treść -->
     </div>
-  </section>
+  </div>
+</section>
+
+<style>
+  /* Podświetlenie aktywnego przycisku */
+  .active-button {
+    background-color: #facc15; /* żółty */
+    box-shadow: 0 0 10px #facc15;
+    transform: scale(1.1);
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  }
+
+  /* Płynna animacja pojawiania się kontenera */
+  #service-details {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+</style>
+
+<script>
+  const serviceData = {
+    wnetrze: {
+      title: "Detailing Wnętrza",
+      desc: "Dogłębne czyszczenie wnętrza pojazdu z użyciem pary, ozonowania i dedykowanej chemii. Efekt świeżości gwarantowany!"
+    },
+    karoseria: {
+      title: "Polerowanie Lakieru",
+      desc: "Profesjonalna korekta lakieru w kilku etapach z pomiarem grubości powłoki. Znikają rysy, pojawia się blask!"
+    },
+    ceramika: {
+      title: "Ochrona Ceramiczna",
+      desc: "Zabezpieczenie lakieru powłoką ceramiczną – odporność na brud, wodę i UV. Trwałość do 24 miesięcy!"
+    },
+    felgi: {
+      title: "Renowacja Felg",
+      desc: "Profesjonalne czyszczenie, polerowanie i zabezpieczenie felg. Twoje koła będą wyglądać jak nowe!"
+    }
+  };
+
+  function showService(key, btn) {
+    const box = document.getElementById("service-details");
+    const content = document.getElementById("service-content");
+
+    // Aktualizuj treść
+    content.innerHTML = `
+      <h4 class="text-2xl font-bold mb-4 text-yellow-400">${serviceData[key].title}</h4>
+      <p>${serviceData[key].desc}</p>
+    `;
+
+    // Pokaż kontener
+    box.classList.remove("opacity-0", "scale-95", "pointer-events-none");
+    box.classList.add("opacity-100", "scale-100", "pointer-events-auto");
+
+    // Usuń aktywne podświetlenie z innych przycisków
+    document.querySelectorAll('#uslugi button').forEach(button => {
+      button.classList.remove('active-button');
+    });
+
+    // Dodaj podświetlenie do klikniętego przycisku
+    btn.classList.add('active-button');
+  }
+
+  function hideService() {
+    const box = document.getElementById("service-details");
+    box.classList.add("opacity-0", "scale-95", "pointer-events-none");
+    box.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
+
+    // Usuń podświetlenie ze wszystkich przycisków
+    document.querySelectorAll('#uslugi button').forEach(button => {
+      button.classList.remove('active-button');
+    });
+  }
+</script>
 
   <section id="pricing">
     <h3>Cennik</h3>
