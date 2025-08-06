@@ -450,7 +450,7 @@
 </section>
 
 
-<footer class="bg-black text-gray-400 text-sm py-12 px-6">
+<footer class="bg-black text-gray-400 text-sm py-12 px-6 relative">
   <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
     
     <!-- Logo & Copyright -->
@@ -497,16 +497,170 @@
     </div>
 
     <!-- mapka -->
-<div>
-  <h4 class="text-yellow-400 font-semibold mb-4">Gdzie jesteśmy?</h4>
-  <div class="rounded-lg overflow-hidden shadow-lg border border-yellow-400">
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2443.8193499024525!2d21.01222947640274!3d52.22967595697102!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc66950240e1%3A0xcea3a8d6dbd90279!2sWarszawa!5e0!3m2!1spl!2spl!4v1696862092393"
-      width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <div>
+      <h4 class="text-yellow-400 font-semibold mb-4">Gdzie jesteśmy?</h4>
+      <div class="rounded-lg overflow-hidden shadow-lg border border-yellow-400">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2443.8193499024525!2d21.01222947640274!3d52.22967595697102!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc66950240e1%3A0xcea3a8d6dbd90279!2sWarszawa!5e0!3m2!1spl!2spl!4v1696862092393"
+          width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+<!-- Chatbot widget -->
+<div id="chatbot" style="position: fixed; bottom: 20px; right: 20px; width: 320px; max-width: 90vw; font-family: Arial, sans-serif; z-index: 9999; box-shadow: 0 4px 10px rgba(0,0,0,0.3); border-radius: 10px; overflow: hidden; background: #222; display: none;">
+  <div id="chatbot-header" style="background: #fbbf24; color: #000; padding: 12px 16px; cursor: pointer; font-weight: bold; display: flex; justify-content: space-between; align-items: center; user-select: none;">
+    <span>Chatbot Shine Master</span>
+    <button id="chatbot-toggle" aria-label="Toggle chatbot" style="all:unset; cursor:pointer; font-size: 22px; line-height: 1; font-weight: bold;">&#9650;</button>
+  </div>
+  <div id="chatbot-body" 
+  style="background: #222; color: #eee; height: 450px; display: flex; flex-direction: column; gap: 10px; padding: 10px; transition: max-height 0.3s ease, opacity 0.3s ease; overflow: hidden; max-height: 1000px; opacity: 1;">
+    <div id="chatbot-messages" style="flex-grow: 1; overflow-y: auto; padding-right: 8px;"></div>
+    <div id="chatbot-quick-replies" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;"></div>
+    <form id="chatbot-form" style="display: flex; gap: 10px;">
+      <input type="text" id="chatbot-input" placeholder="Napisz wiadomość..." style="flex-grow: 1; padding: 8px; border-radius: 5px; border: none; font-size: 14px;" autocomplete="off" />
+      <button type="submit" style="background: #fbbf24; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; font-weight: bold; color: #000;">Wyślij</button>
+    </form>
+    <div style="text-align: right; font-size: 12px; opacity: 0.6;">Wiadomości: <span id="message-count">0</span></div>
   </div>
 </div>
 
-</footer>
+<script>
+setTimeout(() => {
+  document.getElementById('chatbot').style.display = 'block';
+  const teaser = document.createElement('div');
+  teaser.innerText = '💬 Masz pytanie? Kliknij tutaj!';
+  teaser.style = 'position: fixed; bottom: 90px; right: 20px; background: #fbbf24; padding: 10px 16px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); font-weight: bold; cursor: pointer; animation: fadeIn 0.6s ease-out forwards;';
+  teaser.addEventListener('click', () => teaser.remove());
+  document.body.appendChild(teaser);
+  setTimeout(() => teaser.remove(), 6000);
+}, 5000);
+
+(function(){
+  const chatbot = document.getElementById('chatbot');
+  const toggleBtn = document.getElementById('chatbot-toggle');
+  const chatbotBody = document.getElementById('chatbot-body');
+  const messagesContainer = document.getElementById('chatbot-messages');
+  const form = document.getElementById('chatbot-form');
+  const input = document.getElementById('chatbot-input');
+  const quickReplies = document.getElementById('chatbot-quick-replies');
+  const msgCounter = document.getElementById('message-count');
+
+  let count = 0;
+  const incrementCounter = () => msgCounter.textContent = (++count).toString();
+
+  function botMessage(text) {
+    const wrapper = document.createElement('div');
+    wrapper.style = 'display: flex; align-items: flex-start; gap: 8px; animation: fadeIn 0.4s ease-out forwards;';
+
+    const avatar = document.createElement('img');
+    avatar.src = 'avatar.jpg';
+    avatar.style = 'width: 30px; height: 30px; border-radius: 50%;';
+
+    const msg = document.createElement('div');
+    msg.style = 'background: #fbbf24; color: #000; padding: 8px 12px; border-radius: 10px; max-width: 80%; animation: typing 0.3s ease-out forwards;';
+    msg.textContent = text;
+
+    wrapper.appendChild(avatar);
+    wrapper.appendChild(msg);
+    messagesContainer.appendChild(wrapper);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    incrementCounter();
+  }
+
+  function userMessage(text) {
+    const msg = document.createElement('div');
+    msg.style = 'background: #444; color: #eee; padding: 8px 12px; border-radius: 10px; max-width: 80%; align-self: flex-end; margin-bottom: 6px; animation: fadeIn 0.3s ease-out forwards;';
+    msg.textContent = text;
+    messagesContainer.appendChild(msg);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    incrementCounter();
+  }
+
+function toggleChat() {
+  if (chatbotBody.style.maxHeight === '0px') {
+    chatbotBody.style.maxHeight = '450px'; // ZWIĘKSZONA WYSOKOŚĆ
+    chatbotBody.style.opacity = '1';
+    toggleBtn.innerHTML = '&#9650;';
+    input.focus();
+  } else {
+    chatbotBody.style.maxHeight = '0';
+    chatbotBody.style.opacity = '0';
+    toggleBtn.innerHTML = '&#9660;';
+  }
+}
+
+  function simulateBotResponse(text) {
+    let response = 'Przepraszam, nie rozumiem.';
+    const txt = text.toLowerCase();
+
+    const faqs = [
+      { k: ['cześć', 'hej'], r: 'Cześć! Jak mogę pomóc?' },
+      { k: ['usługi', 'oferta', 'czym się zajmujecie'], r: 'Oferujemy kompleksowe usługi detailingowe. Sprawdź zakładkę "Usługi" na stronie.' },
+      { k: ['kontakt', 'mail', 'telefon'], r: 'Skontaktuj się z nami: +48 724 424 290, kontakt@twojafirma.pl' },
+      { k: ['rezerwacja', 'termin', 'spotkanie'], r: 'Możesz umówić się przez <a href="https://calendar.google.com" target="_blank" style="color: #000; text-decoration: underline;">Google Calendar</a>.' }
+    ];
+
+    for (const {k, r} of faqs) {
+      if (k.some(keyword => txt.includes(keyword))) {
+        response = r;
+        break;
+      }
+    }
+    botMessage(response);
+  }
+
+  chatbotBody.style.maxHeight = '1000px';
+  chatbotBody.style.opacity = '1';
+
+  toggleBtn.addEventListener('click', toggleChat);
+  document.getElementById('chatbot-header').addEventListener('click', (e) => {
+    if (e.target === toggleBtn) return;
+    toggleChat();
+  });
+
+  botMessage('Cześć! W czym mogę pomóc?');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    userMessage(text);
+    input.value = '';
+    setTimeout(() => simulateBotResponse(text), 700);
+  });
+
+  // Quick replies
+  const quickOptions = ['📞 Kontakt', '📍 Lokalizacja', '📅 Umów spotkanie'];
+  quickOptions.forEach(option => {
+    const btn = document.createElement('button');
+    btn.textContent = option;
+    btn.style = 'padding: 6px 12px; background: #333; color: #fbbf24; border: none; border-radius: 20px; cursor: pointer; font-size: 12px;';
+    btn.addEventListener('click', () => {
+      userMessage(option);
+      simulateBotResponse(option);
+    });
+    quickReplies.appendChild(btn);
+  });
+})();
+
+// Animations
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+`;
+document.head.appendChild(style);
+</script>
+
+
+
 
 
 <!-- Przycisk "Do góry" -->
@@ -557,7 +711,6 @@
     window.scrollTo({top: 0, behavior: 'smooth'});
   });
 </script>
-
 
 <script>
   const typed = new Typed('#typed-text', {
