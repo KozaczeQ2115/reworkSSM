@@ -62,9 +62,37 @@
 #przed-po p {
   color: #e5e7eb;
 }
-  </style>
+  /* Pasek ładowania */
+  @keyframes loaderSlide {
+    0% { transform: translateX(-100%); }
+    50% { transform: translateX(0); }
+    100% { transform: translateX(100%); }
+  }
+
+  .animate-loaderSlide {
+    animation: loaderSlide 2s infinite;
+  }
+
+  /* Animacja znika loadera */
+  .fade-out {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+  }
+</style>
+
 </head>
 <body class="bg-gradient-to-r from-[#0b0b0b] via-[#1a1a1a] to-[#0d0d0d] text-gray-200 min-h-screen">
+  <!-- Intro Loader -->
+<div id="intro-loader" class="fixed inset-0 z-[9999] bg-black flex items-center justify-center flex-col">
+  <h1 class="text-5xl font-extrabold text-yellow-400 tracking-wide animate-pulse mb-4">
+    Shine<span class="text-white">Master</span>
+  </h1>
+  <div class="loader-bar w-48 h-1 bg-gray-800 overflow-hidden rounded-full">
+    <div class="bar-progress h-full bg-yellow-400 animate-loaderSlide"></div>
+  </div>
+</div>
+
 <header class="bg-black bg-opacity-70 backdrop-blur-md sticky top-0 z-50 shadow-md px-6 py-4">
   <div class="max-w-7xl mx-auto flex justify-between items-center">
 
@@ -550,5 +578,15 @@
   });
 </script>
   </script>
+  <script>
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('intro-loader');
+    loader.classList.add('fade-out');
+    setTimeout(() => {
+      loader.style.display = 'none';
+    }, 700);
+  });
+</script>
+
 </body>
 </html>
