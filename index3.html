@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shine Master - Profesjonalny Detailing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .glass {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    /* Styl sekcji przed i po czyszczeniu */
+/* Styl sekcji przed i po czyszczeniu */
+#przed-po {
+  background: linear-gradient(to right, #000000, #1a1a2e, #111111);
+}
+
+.image-compare {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.image-compare img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.image-compare .img-before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.image-compare:hover .img-before {
+  opacity: 0;
+}
+
+#przed-po h3 {
+  font-weight: 700;
+  color: #facc15;
+}
+
+#przed-po p {
+  color: #e5e7eb;
+}
+  </style>
+</head>
+<body class="bg-gradient-to-br from-black via-gray-900 to-black text-white min-h-screen">
+  <header class="p-6 flex justify-between items-center bg-black bg-opacity-70 sticky top-0 z-50">
+    <h1 class="text-3xl font-bold">ShineMaster</h1>
+    <nav class="space-x-6">
+      <a href="cennik.html" class="hover:text-yellow-400 transition">Usługi</a>
+      <a href="cennik.html" class="hover:text-yellow-400 transition">Cennik</a>
+      <a href="#kontakt" class="hover:text-yellow-400 transition">Kontakt</a>
+
+    </nav>
+  </header>
+
+  <section class="text-center py-20 px-4">
+    <h2 class="text-5xl font-bold mb-4">Detailing jakiego jeszcze nie widziałeś</h2>
+    <div class="text-2xl text-yellow-400 h-10">
+      <span id="typed-text"></span>
+    </div>
+    <a href="kontakt.html" class="mt-10 bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-6 py-3 rounded-xl transition transform hover:scale-105 inline-block text-center">
+  Umów się teraz
+</a>
+
+  </section>
+
+<section id="uslugi" class="py-20 bg-gray-950 px-4 text-white">
+  <h3 class="text-4xl font-bold text-center mb-10">Kliknij na auto, aby odkryć usługi</h3>
+  <div class="relative max-w-4xl mx-auto">
+    <img src="https://narzedzia.elektromobilni.pl/generated-images/file/1000x500/893d88772d97f85ccde1bc642ee48f8a.png/Tesla_Model_3_bialy_bok.png" alt="Samochód" class="w-full rounded-xl shadow-2xl">
+
+    <!-- Klikalne punkty -->
+    <button onclick="showService('wnetrze', this)" class="absolute top-[50%] left-[38%] bg-yellow-500 hover:bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg transition">Wnętrze</button>
+    <button onclick="showService('karoseria', this)" class="absolute top-[30%] left-[70%] bg-yellow-500 hover:bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg transition">Lakier</button>
+    <button onclick="showService('ceramika', this)" class="absolute top-[65%] left-[75%] bg-yellow-500 hover:bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg transition">Ceramika</button>
+    <button onclick="showService('felgi', this)" class="absolute top-[70%] left-[20%] bg-yellow-500 hover:bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg transition">Felgi</button>
+  </div>
+
+  <!-- Kontener z ofertą -->
+  <div id="service-details" class="relative mt-10 max-w-3xl mx-auto transition-all duration-500 opacity-0 scale-95 pointer-events-none">
+    <button onclick="hideService()" class="absolute top-2 right-2 text-white text-2xl font-bold hover:text-yellow-400">&times;</button>
+    <div class="glass p-6 rounded-xl shadow-xl" id="service-content">
+      <!-- dynamiczna treść -->
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Podświetlenie aktywnego przycisku */
+  .active-button {
+    background-color: #facc15; /* żółty */
+    box-shadow: 0 0 10px #facc15;
+    transform: scale(1.1);
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  }
+
+  /* Płynna animacja pojawiania się kontenera */
+  #service-details {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+</style>
+
+<script>
+  const serviceData = {
+    wnetrze: {
+      title: "Detailing Wnętrza",
+      desc: "Dogłębne czyszczenie wnętrza pojazdu z użyciem pary, ozonowania i dedykowanej chemii. Efekt świeżości gwarantowany!"
+    },
+    karoseria: {
+      title: "Polerowanie Lakieru",
+      desc: "Profesjonalna korekta lakieru w kilku etapach z pomiarem grubości powłoki. Znikają rysy, pojawia się blask!"
+    },
+    ceramika: {
+      title: "Ochrona Ceramiczna",
+      desc: "Zabezpieczenie lakieru powłoką ceramiczną – odporność na brud, wodę i UV. Trwałość do 24 miesięcy!"
+    },
+    felgi: {
+      title: "Renowacja Felg",
+      desc: "Profesjonalne czyszczenie, polerowanie i zabezpieczenie felg. Twoje koła będą wyglądać jak nowe!"
+    }
+  };
+
+  function showService(key, btn) {
+    const box = document.getElementById("service-details");
+    const content = document.getElementById("service-content");
+
+    // Aktualizuj treść
+    content.innerHTML = `
+      <h4 class="text-2xl font-bold mb-4 text-yellow-400">${serviceData[key].title}</h4>
+      <p>${serviceData[key].desc}</p>
+    `;
+
+    // Pokaż kontener
+    box.classList.remove("opacity-0", "scale-95", "pointer-events-none");
+    box.classList.add("opacity-100", "scale-100", "pointer-events-auto");
+
+    // Usuń aktywne podświetlenie z innych przycisków
+    document.querySelectorAll('#uslugi button').forEach(button => {
+      button.classList.remove('active-button');
+    });
+
+    // Dodaj podświetlenie do klikniętego przycisku
+    btn.classList.add('active-button');
+  }
+
+  function hideService() {
+    const box = document.getElementById("service-details");
+    box.classList.add("opacity-0", "scale-95", "pointer-events-none");
+    box.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
+
+    // Usuń podświetlenie ze wszystkich przycisków
+    document.querySelectorAll('#uslugi button').forEach(button => {
+      button.classList.remove('active-button');
+    });
+  }
+</script>
+
+
+
+<section id="galeria" class="py-20 bg-black px-4">
+  <h3 class="text-4xl font-bold text-center mb-10 text-white">Galeria Prac</h3>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <img src="https://placehold.co/300x200" class="rounded-xl hover:scale-105 transition duration-300 cursor-pointer" alt="Auto 1" />
+    <img src="https://placehold.co/300x200" class="rounded-xl hover:scale-105 transition duration-300 cursor-pointer" alt="Auto 2" />
+    <img src="https://placehold.co/300x200" class="rounded-xl hover:scale-105 transition duration-300 cursor-pointer" alt="Auto 3" />
+    <img src="https://placehold.co/300x200" class="rounded-xl hover:scale-105 transition duration-300 cursor-pointer" alt="Auto 4" />
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" style="display:none;">
+    <div id="lightbox-bg"></div>
+    <img id="lightbox-img" alt="Powiększony obraz" />
+    <button id="lightbox-close" aria-label="Zamknij galerię">&times;</button>
+  </div>
+
+  <style>
+    #lightbox {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    #lightbox-bg {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(4px);
+      transition: opacity 0.3s ease;
+    }
+    #lightbox-img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.5);
+      z-index: 1001;
+      transform: scale(0.7);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    #lightbox.show #lightbox-img {
+      transform: scale(1);
+      opacity: 1;
+    }
+    #lightbox-close {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      background: transparent;
+      border: none;
+      font-size: 3rem;
+      color: white;
+      cursor: pointer;
+      z-index: 1002;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+    #lightbox-close:hover {
+      color: #ff4444;
+    }
+  </style>
+
+  <script>
+    const images = document.querySelectorAll('#galeria img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxBg = document.getElementById('lightbox-bg');
+    const closeBtn = document.getElementById('lightbox-close');
+
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.style.display = 'flex';
+        // Trigger animation
+        setTimeout(() => {
+          lightbox.classList.add('show');
+        }, 10);
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('show');
+      setTimeout(() => {
+        lightbox.style.display = 'none';
+        lightboxImg.src = '';
+      }, 300);
+    }
+
+    closeBtn.addEventListener('click', closeLightbox);
+    lightboxBg.addEventListener('click', closeLightbox);
+
+    // Zamknij ESC
+    document.addEventListener('keydown', e => {
+      if (e.key === "Escape" && lightbox.style.display === 'flex') {
+        closeLightbox();
+      }
+    });
+  </script>
+</section>
+
+
+  <section id="przed-po" class="py-20 bg-gray-900 text-white px-4">
+  <h3 class="text-4xl font-bold text-center mb-12">Przed i Po Czyszczeniu</h3>
+  <div class="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+    <!-- Box 1 -->
+    <div class="relative group overflow-hidden rounded-xl shadow-xl">
+      <img src="przed.jpg" alt="Przed czyszczeniem" class="w-full h-full object-cover group-hover:opacity-0 transition duration-500">
+      <img src="po.jpg" alt="Po czyszczeniu" class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition duration-500">
+      <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 px-4 py-2 text-sm">Najedź, aby zobaczyć efekt</div>
+    </div>
+
+    <!-- Box 2 -->
+    <div class="relative group overflow-hidden rounded-xl shadow-xl">
+      <img src="img/przed2.jpg" alt="Przed czyszczeniem" class="w-full h-full object-cover group-hover:opacity-0 transition duration-500">
+      <img src="img/po2.jpg" alt="Po czyszczeniu" class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition duration-500">
+      <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 px-4 py-2 text-sm">Najedź, aby zobaczyć efekt</div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 px-4 bg-gray-950">
+  <h3 class="text-4xl font-bold text-center mb-10 text-yellow-400">Przebieg czyszczenia samochodu</h3>
+
+  <div class="timeline-container max-w-4xl mx-auto relative">
+    <!-- Animowana linia z gradientem -->
+    <div class="timeline-line animated"></div>
+
+    <!-- Kroki procesu -->
+    <div class="timeline-steps flex justify-between relative z-20">
+      <div class="timeline-step flex flex-col items-center relative cursor-pointer group" data-step="0">
+        <div class="step-circle active"></div>
+        <span>Mycie</span>
+      </div>
+      <div class="timeline-step flex flex-col items-center relative cursor-pointer group" data-step="1">
+        <div class="step-circle"></div>
+        <span>Polerowanie</span>
+      </div>
+      <div class="timeline-step flex flex-col items-center relative cursor-pointer group" data-step="2">
+        <div class="step-circle"></div>
+        <span>Zabezpieczenie</span>
+      </div>
+      <div class="timeline-step flex flex-col items-center relative cursor-pointer group" data-step="3">
+        <div class="step-circle"></div>
+        <span>Odbiór auta</span>
+      </div>
+    </div>
+
+    <!-- Opinia klienta -->
+    <div id="reviewsCarousel" class="mt-16 max-w-2xl mx-auto text-yellow-300 text-center">
+      <p>"Fantastyczna jakość i dbałość o szczegóły! Auto wygląda jak nowe po myciu i polerowaniu."</p>
+      <div class="author mt-4 font-semibold italic">- Jan Kowalski</div>
+    </div>
+  </div>
+
+  <style>
+    /* Linia z gradientem i animacją */
+    .timeline-line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #facc15 0%, #ffd54f 50%, #facc15 100%);
+      border-radius: 3px;
+      overflow: hidden;
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+
+    /* Animacja przesuwającego się gradientu */
+    @keyframes flowGradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 200% 50%;
+      }
+    }
+
+    .timeline-line.animated {
+      background-size: 200% 100%;
+      animation: flowGradient 4s linear infinite;
+    }
+
+    /* Kółeczka */
+    .step-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, #facc15, #b28704);
+      border: 3px solid white;
+      box-shadow:
+        0 0 8px #facc15,
+        inset 0 0 10px #ffeb7f;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      z-index: 10;
+    }
+
+    .step-circle::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(250, 204, 21, 0.2);
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+
+    /* Pulsowanie aktywnego kółka */
+    .step-circle.active {
+      transform: scale(1.3);
+      box-shadow:
+        0 0 15px #facc15,
+        0 0 30px #facc15,
+        inset 0 0 15px #fff9b3;
+    }
+
+    .step-circle.active::after {
+      opacity: 1;
+      animation: pulseGlow 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      50% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+    }
+
+    /* Teksty pod kółeczkami */
+    .timeline-step span {
+      margin-top: 12px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #facc15;
+      user-select: none;
+    }
+
+    /* Opinie */
+    #reviewsCarousel p {
+      font-size: 1.125rem;
+      line-height: 1.5;
+    }
+    #reviewsCarousel .author {
+      margin-top: 1rem;
+      font-weight: 700;
+      text-align: right;
+      font-style: italic;
+      color: #facc15;
+    }
+  </style>
+
+  <script>
+    // Prosta funkcja do zmiany aktywnego kroku i opinii
+    const steps = document.querySelectorAll('.timeline-step');
+    const circles = document.querySelectorAll('.step-circle');
+    const reviewText = document.querySelector('#reviewsCarousel p');
+    const reviewAuthor = document.querySelector('#reviewsCarousel .author');
+
+    const reviews = [
+      {
+        text: '"Fantastyczna jakość i dbałość o szczegóły! Auto wygląda jak nowe po myciu i polerowaniu."',
+        author: '- Jan Kowalski'
+      },
+      {
+        text: '"Polerowanie było perfekcyjne, a samochód błyszczy jak nigdy wcześniej!"',
+        author: '- Anna Nowak'
+      },
+      {
+        text: '"Zabezpieczenie lakieru na najwyższym poziomie. Polecam każdemu!"',
+        author: '- Marek Wiśniewski'
+      },
+      {
+        text: '"Szybki i profesjonalny odbiór auta. Jestem zachwycony usługą!"',
+        author: '- Katarzyna K.'
+      }
+    ];
+
+    steps.forEach((step, index) => {
+      step.addEventListener('click', () => {
+        // Reset aktywnych
+        circles.forEach(c => c.classList.remove('active'));
+        circles[index].classList.add('active');
+
+        // Podmiana opinii
+        reviewText.textContent = reviews[index].text;
+        reviewAuthor.textContent = reviews[index].author;
+      });
+    });
+  </script>
+</section>
+
+
+
+<section id="kontakt" class="py-24 bg-gradient-to-br from-gray-900 via-black to-gray-800 px-6 text-white">
+  <h3 class="text-5xl font-extrabold text-center mb-16 tracking-wide">Skontaktuj się z nami</h3>
+
+  <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+    <!-- Tekst / info -->
+    <div class="space-y-6">
+      <p class="text-lg leading-relaxed max-w-md mx-auto md:mx-0">
+        Masz pytania? Chcesz umówić się na usługę? Napisz do nas — odpowiemy jak najszybciej!
+      </p>
+      <div class="space-y-4 max-w-md mx-auto md:mx-0">
+       <div class="space-y-4 max-w-md mx-auto md:mx-0">
+  <div class="flex items-center space-x-3">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-18 8h18"/>
+    </svg>
+    <a href="mailto:kontakt@twojafirma.pl" class="hover:text-yellow-300 transition">kontakt@twojafirma.pl</a>
+  </div>
+  <div class="flex items-center space-x-3">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h2l3.6 7.59-1.35 2.44a1 1 0 00.84 1.57H19"/>
+    </svg>
+    <a href="tel:+48724424290" class="hover:text-yellow-300 transition">+48724 424 290</a>
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <!-- Formularz -->
+    <form class="glass bg-black bg-opacity-70 p-10 rounded-3xl shadow-2xl space-y-8 max-w-lg mx-auto">
+      <div>
+        <label for="name" class="block text-sm font-semibold mb-2 tracking-wide">Imię i nazwisko</label>
+        <div class="relative">
+          <input type="text" id="name" name="name" placeholder="Jan Kowalski" required
+                 class="w-full p-4 pl-12 rounded-xl text-black focus:outline-none focus:ring-4 focus:ring-yellow-400 transition" />
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-4 top-1/2 transform -translate-y-1/2 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A7 7 0 1119.88 6.196M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </div>
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm font-semibold mb-2 tracking-wide">Adres e-mail</label>
+        <div class="relative">
+          <input type="email" id="email" name="email" placeholder="jan@example.com" required
+                 class="w-full p-4 pl-12 rounded-xl text-black focus:outline-none focus:ring-4 focus:ring-yellow-400 transition" />
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-4 top-1/2 transform -translate-y-1/2 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12h.01M12 12h.01M8 12h.01M21 12c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8z" />
+          </svg>
+        </div>
+      </div>
+
+      <div>
+        <label for="message" class="block text-sm font-semibold mb-2 tracking-wide">Wiadomość</label>
+        <textarea id="message" name="message" rows="5" placeholder="Twoja wiadomość..." required
+                  class="w-full p-4 rounded-xl text-black resize-none focus:outline-none focus:ring-4 focus:ring-yellow-400 transition"></textarea>
+      </div>
+
+      <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-extrabold text-lg py-4 rounded-3xl transition-transform transform hover:scale-105 shadow-lg">
+        Wyślij wiadomość
+      </button>
+    </form>
+  </div>
+</section>
+
+
+<section id="faq" class="py-20 bg-gray-900 px-4 text-white">
+  <h3 class="text-4xl font-bold text-center mb-10">Najczęściej zadawane pytania</h3>
+  <div class="max-w-4xl mx-auto space-y-6">
+    <details class="glass p-4 rounded-xl cursor-pointer transition hover:shadow-lg">
+      <summary class="font-semibold text-lg">Jak długo trwa pełny detailing?</summary>
+      <p class="mt-2 text-sm text-gray-300">W zależności od zakresu usług – od kilku godzin (np. wnętrze) do nawet dwóch dni (pełny detailing z korektą lakieru i ochroną).</p>
+    </details>
+
+    <details class="glass p-4 rounded-xl cursor-pointer transition hover:shadow-lg">
+      <summary class="font-semibold text-lg">Czy muszę zostawić auto na noc?</summary>
+      <p class="mt-2 text-sm text-gray-300">W przypadku usług premium – tak. Przy standardowym czyszczeniu wnętrza i myciu może to być wykonane tego samego dnia.</p>
+    </details>
+
+    <details class="glass p-4 rounded-xl cursor-pointer transition hover:shadow-lg">
+      <summary class="font-semibold text-lg">Czy detailing usuwa zarysowania?</summary>
+      <p class="mt-2 text-sm text-gray-300">Tak, detailing obejmuje polerowanie lakieru, które usuwa drobne rysy. Głębsze rysy wymagają wieloetapowej korekty.</p>
+    </details>
+
+    <details class="glass p-4 rounded-xl cursor-pointer transition hover:shadow-lg">
+      <summary class="font-semibold text-lg">Czy powłoka ceramiczna jest trwała?</summary>
+      <p class="mt-2 text-sm text-gray-300">Tak, chroni lakier nawet do 2 lat, ułatwia mycie i nadaje efekt hydrofobowy. Zalecamy coroczną inspekcję.</p>
+    </details>
+
+    <details class="glass p-4 rounded-xl cursor-pointer transition hover:shadow-lg">
+      <summary class="font-semibold text-lg">Jak mogę zarezerwować termin?</summary>
+      <p class="mt-2 text-sm text-gray-300">Kliknij przycisk "Zarezerwuj termin" u góry strony lub napisz do nas przez formularz kontaktowy – odpowiemy tego samego dnia.</p>
+    </details>
+  </div>
+</section>
+
+
+
+  <footer class="text-center py-6 bg-black text-sm text-gray-400">&copy; 2025 Shine Master - Wszelkie prawa zastrzeżone.</footer>
+
+  <script>
+    // Animacja typed.js
+    const typed = new Typed('#typed-text', {
+      strings: ['Profesjonalna pielęgnacja aut', 'Polerowanie lakieru', 'Detailing klasy premium', 'Najlepsza jakość w Kutnie', 'Najniższe ceny - profesjonalne podejście'],
+      typeSpeed: 50,
+      backSpeed: 30,
+      loop: true
+    });
+
+    // Wykres Chart.js
+    const ctx = document.getElementById('reviewsChart').getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['2021', '2022', '2023', '2024', '2025'],
+        datasets: [{
+          label: 'Pozytywne opinie (%)',
+          data: [85, 90, 95, 97, 99],
+          backgroundColor: 'rgba(234, 179, 8, 0.8)',
+          borderRadius: 10
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
