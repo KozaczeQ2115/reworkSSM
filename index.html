@@ -79,6 +79,52 @@
     transition: opacity 0.6s ease;
     pointer-events: none;
   }
+#chatbot.collapsed {
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  padding: 0;
+  background: #fbbf24;
+  right: 20px;
+  bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+#chatbot.collapsed #chatbot-header {
+  justify-content: center;
+  padding: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+#chatbot.collapsed #chatbot-header span {
+  display: none; /* Ukrywa tekst "Chatbot Shine Master" */
+}
+
+#chatbot.collapsed #chatbot-toggle {
+  display: none; /* Ukrywa strzałkę */
+}
+
+/* Dodaj avatar do #chatbot-header w collapsed */
+#chatbot.collapsed #chatbot-header::before {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-image: url('avatar.jpg');
+  background-size: cover;
+  background-position: center;
+  margin: 0 auto;
+}
+
+#chatbot.collapsed #chatbot-body {
+  display: none !important;
+}
+
+
 </style>
 
 </head>
@@ -554,7 +600,7 @@ setTimeout(() => {
     wrapper.style = 'display: flex; align-items: flex-start; gap: 8px; animation: fadeIn 0.4s ease-out forwards;';
 
     const avatar = document.createElement('img');
-    avatar.src = 'avatar.jpg';
+    avatar.src = 'https://png.pngtree.com/png-clipart/20230927/original/pngtree-man-avatar-image-for-profile-png-image_13001877.png';
     avatar.style = 'width: 30px; height: 30px; border-radius: 50%;';
 
     const msg = document.createElement('div');
@@ -579,27 +625,83 @@ setTimeout(() => {
 
 function toggleChat() {
   if (chatbotBody.style.maxHeight === '0px') {
-    chatbotBody.style.maxHeight = '450px'; // ZWIĘKSZONA WYSOKOŚĆ
+    chatbotBody.style.maxHeight = '450px';
     chatbotBody.style.opacity = '1';
     toggleBtn.innerHTML = '&#9650;';
+    chatbot.classList.remove('collapsed'); // <-- usuń klasę kółka
     input.focus();
   } else {
     chatbotBody.style.maxHeight = '0';
     chatbotBody.style.opacity = '0';
     toggleBtn.innerHTML = '&#9660;';
+    chatbot.classList.add('collapsed'); // <-- dodaj klasę kółka
   }
 }
+
 
   function simulateBotResponse(text) {
     let response = 'Przepraszam, nie rozumiem.';
     const txt = text.toLowerCase();
 
-    const faqs = [
-      { k: ['cześć', 'hej'], r: 'Cześć! Jak mogę pomóc?' },
-      { k: ['usługi', 'oferta', 'czym się zajmujecie'], r: 'Oferujemy kompleksowe usługi detailingowe. Sprawdź zakładkę "Usługi" na stronie.' },
-      { k: ['kontakt', 'mail', 'telefon'], r: 'Skontaktuj się z nami: +48 724 424 290, kontakt@twojafirma.pl' },
-      { k: ['rezerwacja', 'termin', 'spotkanie'], r: 'Możesz umówić się przez <a href="https://calendar.google.com" target="_blank" style="color: #000; text-decoration: underline;">Google Calendar</a>.' }
-    ];
+const faqs = [
+  {
+    k: ['cześć', 'hej', 'witaj', 'dzień dobry', 'siema', 'elo'],
+    r: 'Cześć! Jak mogę Ci pomóc? 😊'
+  },
+  {
+    k: ['usługi', 'oferta', 'czym się zajmujecie', 'co robicie', 'co oferujecie', 'produkty', 'zakres usług'],
+    r: 'Oferujemy kompleksowe usługi detailingowe samochodów, w tym mycie, polerowanie, zabezpieczenie powłoką ceramiczną, renowację lakieru i czyszczenie wnętrza.'
+  },
+  {
+    k: ['kontakt', 'mail', 'telefon', 'adres', 'jak się z wami skontaktować', 'gdzie jesteście'],
+    r: 'Możesz się z nami skontaktować telefonicznie pod numerem +48 724 424 290 lub mailowo: kontakt@twojafirma.pl. Nasz adres to ul. Przykładowa 10, Warszawa.'
+  },
+  {
+    k: ['rezerwacja', 'termin', 'spotkanie', 'umówić się', 'kiedy wolny termin', 'jak zarezerwować'],
+    r: 'Aby umówić się na wizytę, zadzwoń do nas pod numer 724-424-290 lub skorzystaj z kalendarza online na stronie.'
+  },
+  {
+    k: ['cennik', 'ile kosztuje', 'koszt', 'cena', 'cennik usług', 'opłaty'],
+    r: 'Ceny naszych usług zależą od zakresu i rodzaju prac. Szczegółowy cennik znajdziesz w zakładce "Cennik" na naszej stronie lub możesz zapytać nas bezpośrednio.'
+  },
+  {
+    k: ['godziny otwarcia', 'kiedy otwarte', 'godziny pracy', 'praca', 'kiedy działacie'],
+    r: 'Jesteśmy otwarci od poniedziałku do piątku w godzinach 9:00 - 18:00 oraz w soboty od 10:00 do 14:00.'
+  },
+  {
+    k: ['lokalizacja', 'gdzie jesteście', 'adres', 'jak dojechać', 'mapa'],
+    r: 'Nasza siedziba znajduje się przy ul. Przykładowej 10 w Warszawie. Możesz skorzystać z mapy na stronie, aby łatwo nas znaleźć.'
+  },
+  {
+    k: ['opinie', 'recenzje', 'co mówią klienci', 'referencje'],
+    r: 'Zapraszamy do przeczytania opinii naszych zadowolonych klientów na stronie lub w Google Reviews.'
+  },
+  {
+    k: ['gwarancja', 'serwis', 'reklamacje', 'zwroty'],
+    r: 'Na wszystkie wykonane usługi udzielamy gwarancji. W razie problemów prosimy o kontakt, pomożemy jak najszybciej.'
+  },
+  {
+    k: ['parking', 'miejsce do parkowania', 'parking dla klientów'],
+    r: 'Dla naszych klientów dostępny jest bezpłatny parking na terenie obiektu.'
+  },
+  {
+    k: ['COVID', 'epidemia', 'bezpieczeństwo', 'sanitarny'],
+    r: 'Dbamy o bezpieczeństwo naszych klientów i pracowników, stosujemy wszelkie wymagane środki higieny i sanitacji.'
+  },
+  {
+    k: ['promocje', 'rabaty', 'zniżki', 'oferty specjalne'],
+    r: 'Aktualne promocje i rabaty znajdziesz na naszej stronie w sekcji "Promocje".'
+  },
+  {
+    k: ['jak działa', 'proces', 'jak to wygląda'],
+    r: 'Proces realizacji usługi zaczyna się od konsultacji, następnie umawiamy termin i wykonujemy usługę zgodnie z ustaleniami.'
+  },
+  {
+    k: ['inne pytania', 'pomoc', 'wsparcie', 'nie wiem', 'co zrobić'],
+    r: 'Jeśli masz inne pytania lub potrzebujesz pomocy, napisz do nas lub zadzwoń – chętnie pomożemy!'
+  }
+];
+
 
     for (const {k, r} of faqs) {
       if (k.some(keyword => txt.includes(keyword))) {
@@ -668,7 +770,7 @@ document.head.appendChild(style);
   style="
     position: fixed;
     bottom: 40px;
-    right: 40px;
+    left: 40px; /* Zmienione z right na left */
     display: none;
     background-color: #facc15; /* żółty */
     border: none;
@@ -690,12 +792,10 @@ document.head.appendChild(style);
   const scrollTopBtn = document.getElementById('scrollTopBtn');
 
   window.addEventListener('scroll', () => {
-    // Sprawdź, czy użytkownik jest na dole strony
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const windowHeight = window.innerHeight;
     const docHeight = document.documentElement.scrollHeight;
 
-    // Jeśli jesteśmy blisko dołu (np. w 50px od dołu)
     if (scrollTop + windowHeight >= docHeight - 50) {
       scrollTopBtn.style.display = 'block';
       scrollTopBtn.style.opacity = '1';
@@ -711,6 +811,7 @@ document.head.appendChild(style);
     window.scrollTo({top: 0, behavior: 'smooth'});
   });
 </script>
+
 
 <script>
   const typed = new Typed('#typed-text', {
