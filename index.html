@@ -114,7 +114,7 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background-image: url('avatar.jpg');
+  background-image: url('https://png.pngtree.com/png-clipart/20230927/original/pngtree-man-avatar-image-for-profile-png-image_13001877.png');
   background-size: cover;
   background-position: center;
   margin: 0 auto;
@@ -192,10 +192,10 @@
   <p class="mt-4 text-lg text-gray-400">Zadbamy o każdy detal Twojego auta — tak, jak nikt inny.</p>
 
   <div class="mt-10 flex flex-wrap justify-center gap-6 text-yellow-400 text-sm font-semibold">
-    <div class="flex items-center space-x-2"><span>⭐</span><span>10 lat doświadczenia</span></div>
+    <div class="flex items-center space-x-2"><span>⭐</span><span>5 lat doświadczenia</span></div>
     <div class="flex items-center space-x-2"><span>🔧</span><span>Profesjonalny sprzęt</span></div>
     <div class="flex items-center space-x-2"><span>🧽</span><span>Bezpieczna chemia</span></div>
-    <div class="flex items-center space-x-2"><span>🚗</span><span>Auto zastępcze</span></div>
+    <div class="flex items-center space-x-2"><span>🚗</span><span>Odwóz klienta</span></div>
   </div>
   
   <!-- 🏆 Nagrody -->
@@ -524,11 +524,11 @@
     <div>
       <h4 class="text-yellow-400 font-semibold mb-4">Szybkie linki</h4>
       <ul class="space-y-3">
-        <li><a href="/" class="hover:text-yellow-300 transition">Strona główna</a></li>
-        <li><a href="/uslugi" class="hover:text-yellow-300 transition">Usługi</a></li>
-        <li><a href="/cennik" class="hover:text-yellow-300 transition">Cennik</a></li>
-        <li><a href="/galeria" class="hover:text-yellow-300 transition">Galeria</a></li>
-        <li><a href="/kontakt" class="hover:text-yellow-300 transition">Kontakt</a></li>
+        <li><a href="index.html" class="hover:text-yellow-300 transition">Strona główna</a></li>
+        <li><a href="www.imaciaszek.pl" class="hover:text-yellow-300 transition">Twórca strony</a></li>
+        <li><a href="cennik.html" class="hover:text-yellow-300 transition">Cennik</a></li>
+        <li><a href="regulamin.html" class="hover:text-yellow-300 transition">Regulamin</a></li>
+        <li><a href="kontakt.html" class="hover:text-yellow-300 transition">Kontakt</a></li>
       </ul>
     </div>
     
@@ -654,7 +654,7 @@ const faqs = [
   },
   {
     k: ['kontakt', 'mail', 'telefon', 'adres', 'jak się z wami skontaktować', 'gdzie jesteście'],
-    r: 'Możesz się z nami skontaktować telefonicznie pod numerem +48 724 424 290 lub mailowo: kontakt@twojafirma.pl. Nasz adres to ul. Przykładowa 10, Warszawa.'
+    r: 'Możesz się z nami skontaktować telefonicznie pod numerem +48 724 424 290 lub mailowo: shinemastermobile@gmail.com. Nasz adres to ul. Przykładowa 10, Warszawa.'
   },
   {
     k: ['rezerwacja', 'termin', 'spotkanie', 'umówić się', 'kiedy wolny termin', 'jak zarezerwować'],
@@ -666,7 +666,7 @@ const faqs = [
   },
   {
     k: ['godziny otwarcia', 'kiedy otwarte', 'godziny pracy', 'praca', 'kiedy działacie'],
-    r: 'Jesteśmy otwarci od poniedziałku do piątku w godzinach 9:00 - 18:00 oraz w soboty od 10:00 do 14:00.'
+    r: 'Jesteśmy działalnością która pracuje z pasją - dlatego nawet jak zadzwonisz o 2 w nocy to przyjmiemy autko na warztat!'
   },
   {
     k: ['lokalizacja', 'gdzie jesteście', 'adres', 'jak dojechać', 'mapa'],
@@ -842,6 +842,28 @@ document.head.appendChild(style);
     }, 700);
   });
 </script>
+
+<script>
+  // Blokada kliknięcia prawym przyciskiem
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+  });
+
+  // Blokada skrótów klawiszowych (np. F12, Ctrl+Shift+I, Ctrl+U)
+  document.addEventListener('keydown', function (e) {
+    // F12
+    if (e.key === 'F12') {
+      e.preventDefault();
+    }
+
+    // Ctrl+Shift+I lub Ctrl+Shift+J lub Ctrl+U
+    if ((e.ctrlKey && e.shiftKey && ['I', 'J'].includes(e.key.toUpperCase())) || 
+        (e.ctrlKey && e.key.toUpperCase() === 'U')) {
+      e.preventDefault();
+    }
+  });
+</script>
+
 
 </body>
 </html>
