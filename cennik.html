@@ -58,61 +58,115 @@
 <body>
 
 <section id="cennik" class="py-20 px-4 max-w-7xl mx-auto">
-  <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-yellow-400 drop-shadow-md">Cennik Usług</h2>
+  <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-yellow-400 drop-shadow-md">
+    Cennik Usług
+  </h2>
 
   <div class="grid md:grid-cols-3 gap-10">
-    <!-- Box usług -->
-    <div class="glass p-6 rounded-2xl shadow-xl">
-      <h3 class="text-2xl font-semibold mb-4 text-yellow-300">Detailing Wnętrza</h3>
+
+    <!-- Pakiet 1 -->
+    <div class="glass p-8 rounded-2xl shadow-xl hover:scale-105 hover:shadow-2xl transition transform duration-300">
+      <div class="text-5xl mb-4">🛋️</div>
+      <h3 class="text-2xl font-semibold mb-2 text-yellow-300">Detailing Wnętrza</h3>
+      <p class="text-sm text-gray-400 mb-4">Dokładne czyszczenie, odświeżenie i ochrona wnętrza pojazdu.</p>
       <ul class="space-y-2 text-sm text-gray-300 mb-6">
-        <li>Małe auta: <strong>od 200 zł</strong></li>
-        <li>Średnie auta: <strong>od 250 zł</strong></li>
-        <li>Duże auta / SUV: <strong>od 300 zł</strong></li>
+        <li>🚗 Małe auta: <strong>od 200 zł</strong></li>
+        <li>🚙 Średnie auta: <strong>od 250 zł</strong></li>
+        <li>🚐 Duże auta / SUV: <strong>od 300 zł</strong></li>
         <li><em>Parowe czyszczenie, impregnacja tapicerki w cenie</em></li>
       </ul>
       <a href="#kontakt" class="block text-center bg-yellow-500 hover:bg-yellow-400 text-black font-semibold py-2 rounded-lg transition">Zamów</a>
     </div>
 
-    <div class="glass p-6 rounded-2xl shadow-xl">
-      <h3 class="text-2xl font-semibold mb-4 text-yellow-300">Polerowanie Lakieru</h3>
+    <!-- Pakiet 2 - Wyróżniony -->
+    <div class="glass p-8 rounded-2xl shadow-xl border-2 border-yellow-400 hover:scale-105 hover:shadow-2xl transition transform duration-300 relative">
+      <span class="absolute top-0 right-0 bg-yellow-500 text-black text-xs font-bold px-3 py-1 rounded-bl-lg">Najczęściej wybierane</span>
+      <div class="text-5xl mb-4">✨</div>
+      <h3 class="text-2xl font-semibold mb-2 text-yellow-300">Polerowanie Lakieru</h3>
+      <p class="text-sm text-gray-400 mb-4">Przywracamy głębię koloru i efekt lustra bez ryzyka uszkodzenia lakieru.</p>
       <ul class="space-y-2 text-sm text-gray-300 mb-6">
-        <li>Jednoetapowe: <strong>od 500 zł</strong></li>
-        <li>Wieloetapowe: <strong>od 800 zł</strong></li>
-        <li>Pomiar grubości lakieru: <strong>w cenie</strong></li>
+        <li>🔹 Jednoetapowe: <strong>od 500 zł</strong></li>
+        <li>🔹 Wieloetapowe: <strong>od 800 zł</strong></li>
+        <li>📏 Pomiar grubości lakieru: <strong>w cenie</strong></li>
         <li><em>Efekt lustra gwarantowany</em></li>
       </ul>
       <a href="#kontakt" class="block text-center bg-yellow-500 hover:bg-yellow-400 text-black font-semibold py-2 rounded-lg transition">Zamów</a>
     </div>
 
-    <div class="glass p-6 rounded-2xl shadow-xl">
-      <h3 class="text-2xl font-semibold mb-4 text-yellow-300">Ochrona Ceramiczna</h3>
+    <!-- Pakiet 3 -->
+    <div class="glass p-8 rounded-2xl shadow-xl hover:scale-105 hover:shadow-2xl transition transform duration-300">
+      <div class="text-5xl mb-4">🛡️</div>
+      <h3 class="text-2xl font-semibold mb-2 text-yellow-300">Ochrona Ceramiczna</h3>
+      <p class="text-sm text-gray-400 mb-4">Długotrwałe zabezpieczenie lakieru przed zabrudzeniami i UV.</p>
       <ul class="space-y-2 text-sm text-gray-300 mb-6">
-        <li>1-letnia powłoka: <strong>od 600 zł</strong></li>
-        <li>3-letnia powłoka: <strong>od 1000 zł</strong></li>
-        <li>Felgi i szyby: <strong>+150 zł</strong></li>
+        <li>1️⃣ 1-letnia powłoka: <strong>od 600 zł</strong></li>
+        <li>3️⃣ 3-letnia powłoka: <strong>od 1000 zł</strong></li>
+        <li>⚙️ Felgi i szyby: <strong>+150 zł</strong></li>
         <li><em>Bead effect & ochrona UV</em></li>
       </ul>
       <a href="#kontakt" class="block text-center bg-yellow-500 hover:bg-yellow-400 text-black font-semibold py-2 rounded-lg transition">Zamów</a>
     </div>
-  </div>
 
-  <!-- Usługi dodatkowe -->
-  <div class="mt-20 max-w-4xl mx-auto text-center">
-    <h4 class="text-3xl font-semibold text-yellow-400 mb-6">Usługi Dodatkowe</h4>
-    <div class="grid md:grid-cols-2 gap-6 text-sm text-gray-300">
-      <div class="glass p-4 rounded-xl">
-        <p>Pranie tapicerki punktowe: <strong>od 50 zł / miejsce</strong></p>
-        <p>Odświeżenie wnętrza: <strong>od 150 zł</strong></p>
-        <p>Ozonowanie: <strong>50 zł</strong></p>
-      </div>
-      <div class="glass p-4 rounded-xl">
-        <p>Impregnacja plastików: <strong>od 70 zł</strong></p>
-        <p>Regeneracja lamp: <strong>od 120 zł</strong></p>
-        <p>Mycie detailingowe szyb: <strong>od 40 zł</strong></p>
-      </div>
-    </div>
   </div>
 </section>
+
+
+<!-- Usługi dodatkowe -->
+<section class="mt-20 max-w-5xl mx-auto text-center px-4">
+  <h4 class="text-3xl font-semibold text-yellow-400 mb-10">Usługi Dodatkowe</h4>
+  <div class="grid md:grid-cols-3 gap-6 text-gray-300">
+
+    <!-- Usługa 1 -->
+    <div class="glass p-6 rounded-xl hover:scale-105 hover:shadow-lg transition transform duration-300">
+      <div class="text-4xl mb-3">🛋️</div>
+      <h5 class="text-xl font-bold mb-2">Pranie tapicerki punktowe</h5>
+      <p class="text-sm mb-3">Usuwanie lokalnych zabrudzeń z tapicerki materiałowej i skórzanej.</p>
+      <p class="text-yellow-400 font-semibold">od 50 zł / miejsce</p>
+    </div>
+
+    <!-- Usługa 2 -->
+    <div class="glass p-6 rounded-xl hover:scale-105 hover:shadow-lg transition transform duration-300">
+      <div class="text-4xl mb-3">🌬️</div>
+      <h5 class="text-xl font-bold mb-2">Odświeżenie wnętrza</h5>
+      <p class="text-sm mb-3">Kompleksowe czyszczenie i pielęgnacja wnętrza, usuwanie kurzu, plam i nieprzyjemnych zapachów.</p>
+      <p class="text-yellow-400 font-semibold">od 150 zł</p>
+    </div>
+
+    <!-- Usługa 3 -->
+    <div class="glass p-6 rounded-xl hover:scale-105 hover:shadow-lg transition transform duration-300">
+      <div class="text-4xl mb-3">💨</div>
+      <h5 class="text-xl font-bold mb-2">Ozonowanie</h5>
+      <p class="text-sm mb-3">Eliminacja bakterii, wirusów i nieprzyjemnych zapachów z wnętrza pojazdu.</p>
+      <p class="text-yellow-400 font-semibold">50 zł</p>
+    </div>
+
+    <!-- Usługa 4 -->
+    <div class="glass p-6 rounded-xl hover:scale-105 hover:shadow-lg transition transform duration-300">
+      <div class="text-4xl mb-3">🛡️</div>
+      <h5 class="text-xl font-bold mb-2">Impregnacja plastików</h5>
+      <p class="text-sm mb-3">Zabezpieczenie elementów plastikowych przed promieniowaniem UV i blaknięciem.</p>
+      <p class="text-yellow-400 font-semibold">od 70 zł</p>
+    </div>
+
+    <!-- Usługa 5 -->
+    <div class="glass p-6 rounded-xl hover:scale-105 hover:shadow-lg transition transform duration-300">
+      <div class="text-4xl mb-3">💡</div>
+      <h5 class="text-xl font-bold mb-2">Regeneracja lamp</h5>
+      <p class="text-sm mb-3">Polerowanie i zabezpieczenie reflektorów dla lepszej widoczności i wyglądu.</p>
+      <p class="text-yellow-400 font-semibold">od 120 zł</p>
+    </div>
+
+    <!-- Usługa 6 -->
+    <div class="glass p-6 rounded-xl hover:scale-105 hover:shadow-lg transition transform duration-300">
+      <div class="text-4xl mb-3">🪟</div>
+      <h5 class="text-xl font-bold mb-2">Mycie detailingowe szyb</h5>
+      <p class="text-sm mb-3">Dokładne czyszczenie szyb z wewnątrz i na zewnątrz, bez smug.</p>
+      <p class="text-yellow-400 font-semibold">od 40 zł</p>
+    </div>
+
+  </div>
+</section>
+
 
 <!-- Animowane liczby -->
 <section class="max-w-5xl mx-auto py-20 text-center">
@@ -135,26 +189,94 @@
 
 <!-- FAQ -->
 <section class="max-w-5xl mx-auto py-20 px-4">
-  <h3 class="text-4xl font-bold text-yellow-400 mb-12 text-center">Najczęściej zadawane pytania (FAQ)</h3>
+  <h3 class="text-4xl font-bold text-yellow-400 mb-12 text-center">
+    Najczęściej zadawane pytania (FAQ)
+  </h3>
+
   <div class="space-y-4">
-    <details class="faq-item glass rounded-lg p-4">
-      <summary>Jak długo trwa detailing wnętrza?</summary>
-      <p>Standardowa usługa detailingowa wnętrza trwa około 3-5 godzin, w zależności od stanu pojazdu.</p>
+    <details class="faq-item glass rounded-lg p-4 transition-all duration-300">
+      <summary class="flex items-center justify-between cursor-pointer text-lg font-semibold">
+        <span>⏱️ Jak długo trwa detailing wnętrza?</span>
+      </summary>
+      <p class="mt-2 text-gray-300">
+        Standardowa usługa detailingowa wnętrza trwa około <strong>3–5 godzin</strong>, 
+        w zależności od stanu pojazdu oraz zakresu wybranych prac (czyszczenie foteli, pranie podsufitki, ozonowanie itp.).
+      </p>
     </details>
-    <details class="faq-item glass rounded-lg p-4">
-      <summary>Czy podczas polerowania lakieru używacie bezpiecznych metod?</summary>
-      <p>Tak, korzystamy tylko z profesjonalnych, bezpiecznych technologii i preparatów, aby nie uszkodzić lakieru.</p>
+
+    <details class="faq-item glass rounded-lg p-4 transition-all duration-300">
+      <summary class="flex items-center justify-between cursor-pointer text-lg font-semibold">
+        <span>✨ Czy podczas polerowania lakieru używacie bezpiecznych metod?</span>
+      </summary>
+      <p class="mt-2 text-gray-300">
+        Tak! Korzystamy wyłącznie z <strong>profesjonalnych narzędzi i past polerskich</strong>, 
+        które są bezpieczne dla lakieru. Dobieramy twardość gąbek i stopień ścieralności past indywidualnie, 
+        aby uzyskać maksymalny efekt bez ryzyka uszkodzeń.
+      </p>
     </details>
-    <details class="faq-item glass rounded-lg p-4">
-      <summary>Jak dbać o powłokę ceramiczną po aplikacji?</summary>
-      <p>Zalecamy regularne mycie ręczne i unikanie agresywnych środków chemicznych, aby powłoka ceramiczna długo utrzymała swoje właściwości.</p>
+
+    <details class="faq-item glass rounded-lg p-4 transition-all duration-300">
+      <summary class="flex items-center justify-between cursor-pointer text-lg font-semibold">
+        <span>🛡️ Jak dbać o powłokę ceramiczną po aplikacji?</span>
+      </summary>
+      <p class="mt-2 text-gray-300">
+        Zalecamy regularne <strong>mycie ręczne metodą na dwa wiadra</strong> oraz używanie neutralnego pH szamponu. 
+        Unikaj myjni automatycznych i silnych chemikaliów – wówczas powłoka utrzyma swoje właściwości przez wiele lat.
+      </p>
     </details>
-    <details class="faq-item glass rounded-lg p-4">
-      <summary>Czy oferujecie usługi mobilne?</summary>
-      <p>Tak, dojeżdżamy do klienta na terenie miasta i okolic. Szczegóły ustalamy indywidualnie.</p>
+
+    <details class="faq-item glass rounded-lg p-4 transition-all duration-300">
+      <summary class="flex items-center justify-between cursor-pointer text-lg font-semibold">
+        <span>🚗 Czy oferujecie usługi mobilne?</span>
+      </summary>
+      <p class="mt-2 text-gray-300">
+        Tak, możemy dojechać do klienta na terenie miasta i okolic. 
+        Wymagamy jedynie dostępu do prądu i wody w miejscu realizacji. 
+        Szczegóły ustalamy indywidualnie podczas rezerwacji.
+      </p>
+    </details>
+
+    <details class="faq-item glass rounded-lg p-4 transition-all duration-300">
+      <summary class="flex items-center justify-between cursor-pointer text-lg font-semibold">
+        <span>💰 Ile kosztują wasze usługi?</span>
+      </summary>
+      <p class="mt-2 text-gray-300">
+        Ceny zależą od rodzaju usługi i stanu pojazdu. 
+        Szczegółowy <a href="/cennik" class="text-yellow-400 underline">cennik</a> znajdziesz w zakładce na naszej stronie.
+      </p>
+    </details>
+
+    <details class="faq-item glass rounded-lg p-4 transition-all duration-300">
+      <summary class="flex items-center justify-between cursor-pointer text-lg font-semibold">
+        <span>📅 Jak zarezerwować termin?</span>
+      </summary>
+      <p class="mt-2 text-gray-300">
+        Termin można zarezerwować telefonicznie, mailowo lub poprzez nasz formularz online. 
+        Zalecamy umawiać się z <strong>min. 2–3 dniowym wyprzedzeniem</strong>.
+      </p>
     </details>
   </div>
 </section>
+
+<style>
+  .faq-item[open] {
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid #fbbf24;
+  }
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq-item summary:after {
+    content: '+';
+    font-weight: bold;
+    transition: transform 0.3s ease;
+  }
+  .faq-item[open] summary:after {
+    content: '–';
+    transform: rotate(180deg);
+  }
+</style>
+
 
 <!-- Mapa -->
 <section class="max-w-5xl mx-auto py-20 px-4">
@@ -173,13 +295,270 @@
   </div>
 </section>
 
-<!-- Sekcja kontaktowa -->
-<section id="kontakt" class="text-center py-12 text-sm text-gray-400">
-  <p>Masz pytania? Skontaktuj się z nami: 
-    <a href="mailto:kontakt@shinemaster.pl" class="text-yellow-400 hover:underline">kontakt@shinemaster.pl</a> lub tel. 
-    <a href="tel:+48123456789" class="text-yellow-400 hover:underline">+48 123 456 789</a>
-  </p>
-</section>
+<footer class="bg-black text-gray-400 text-sm py-12 px-6 relative">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+    
+    <!-- Logo & Copyright -->
+    <div class="space-y-4 text-center md:text-left">
+      <h2 class="text-2xl font-extrabold text-yellow-400">Shine Master</h2>
+      <p class="text-gray-500">&copy; 2025 Shine Master</p>
+      <p class="text-gray-500">Wszelkie prawa zastrzeżone.</p>
+      <div class="flex justify-center md:justify-start gap-4 mt-4 text-yellow-400">
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="hover:text-yellow-300 transition">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54v-2.89h2.54v-2.205c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.196 2.238.196v2.463h-1.26c-1.243 0-1.63.77-1.63 1.562v1.874h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 16.991 22 12z"/></svg>
+        </a>
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="hover:text-yellow-300 transition">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14.86 4.48 4.48 0 001.98-2.48 9.06 9.06 0 01-2.88 1.1 4.52 4.52 0 00-7.7 4.13A12.82 12.82 0 013 4.92a4.51 4.51 0 001.4 6.03 4.43 4.43 0 01-2.05-.56v.06a4.51 4.51 0 003.62 4.43 4.52 4.52 0 01-2.04.08 4.52 4.52 0 004.21 3.13A9 9 0 013 19.54 12.81 12.81 0 009 21c7.55 0 11.68-6.25 11.68-11.67 0-.18-.01-.35-.02-.52A8.18 8.18 0 0023 3z"/></svg>
+        </a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="hover:text-yellow-300 transition">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 2A3.75 3.75 0 004 7.75v8.5A3.75 3.75 0 007.75 20h8.5a3.75 3.75 0 003.75-3.75v-8.5A3.75 3.75 0 0016.25 4h-8.5zm8.25 1.25a1 1 0 110 2 1 1 0 010-2zm-4.25 2a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6z"/></svg>
+        </a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="hover:text-yellow-300 transition">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v6h-4v-6a2 2 0 00-4 0v6h-4v-12h4v2a4 4 0 014-2zM2 9h4v12H2zM4 4a2 2 0 110 4 2 2 0 010-4z"/></svg>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Szybkie linki -->
+    <div>
+      <h4 class="text-yellow-400 font-semibold mb-4">Szybkie linki</h4>
+      <ul class="space-y-3">
+        <li><a href="index.html" class="hover:text-yellow-300 transition">Strona główna</a></li>
+        <li><a href="www.imaciaszek.pl" class="hover:text-yellow-300 transition">Twórca strony</a></li>
+        <li><a href="cennik.html" class="hover:text-yellow-300 transition">Cennik</a></li>
+        <li><a href="regulamin.html" class="hover:text-yellow-300 transition">Regulamin</a></li>
+        <li><a href="kontakt.html" class="hover:text-yellow-300 transition">Kontakt</a></li>
+      </ul>
+    </div>
+    
+    <!-- Kontakt -->
+    <div>
+      <h4 class="text-yellow-400 font-semibold mb-4">Kontakt</h4>
+      <ul class="space-y-3">
+        <li><span class="font-semibold">Telefon:</span> <a href="tel:+48724424290" class="hover:text-yellow-300 transition">+48 724 424 290</a></li>
+        <li><span class="font-semibold">E-mail:</span> <a href="mailto:kontakt@twojafirma.pl" class="hover:text-yellow-300 transition">kontakt@twojafirma.pl</a></li>
+        <li><span class="font-semibold">Adres:</span> ul. Krzywa jak twoja matka, 99-300 Kutno</li>
+      </ul>
+    </div>
+
+    <!-- mapka -->
+    <div>
+      <h4 class="text-yellow-400 font-semibold mb-4">Gdzie jesteśmy?</h4>
+      <div class="rounded-lg overflow-hidden shadow-lg border border-yellow-400">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2443.8193499024525!2d21.01222947640274!3d52.22967595697102!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc66950240e1%3A0xcea3a8d6dbd90279!2sWarszawa!5e0!3m2!1spl!2spl!4v1696862092393"
+          width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+<!-- Chatbot widget -->
+<div id="chatbot" style="position: fixed; bottom: 20px; right: 20px; width: 320px; max-width: 90vw; font-family: Arial, sans-serif; z-index: 9999; box-shadow: 0 4px 10px rgba(0,0,0,0.3); border-radius: 10px; overflow: hidden; background: #222; display: none;">
+  <div id="chatbot-header" style="background: #fbbf24; color: #000; padding: 12px 16px; cursor: pointer; font-weight: bold; display: flex; justify-content: space-between; align-items: center; user-select: none;">
+    <span>Chatbot Shine Master</span>
+    <button id="chatbot-toggle" aria-label="Toggle chatbot" style="all:unset; cursor:pointer; font-size: 22px; line-height: 1; font-weight: bold;">&#9650;</button>
+  </div>
+  <div id="chatbot-body" 
+  style="background: #222; color: #eee; height: 450px; display: flex; flex-direction: column; gap: 10px; padding: 10px; transition: max-height 0.3s ease, opacity 0.3s ease; overflow: hidden; max-height: 1000px; opacity: 1;">
+    <div id="chatbot-messages" style="flex-grow: 1; overflow-y: auto; padding-right: 8px;"></div>
+    <div id="chatbot-quick-replies" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;"></div>
+    <form id="chatbot-form" style="display: flex; gap: 10px;">
+      <input type="text" id="chatbot-input" placeholder="Napisz wiadomość..." style="flex-grow: 1; padding: 8px; border-radius: 5px; border: none; font-size: 14px;" autocomplete="off" />
+      <button type="submit" style="background: #fbbf24; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; font-weight: bold; color: #000;">Wyślij</button>
+    </form>
+    <div style="text-align: right; font-size: 12px; opacity: 0.6;">Wiadomości: <span id="message-count">0</span></div>
+  </div>
+</div>
+
+<script>
+setTimeout(() => {
+  document.getElementById('chatbot').style.display = 'block';
+  const teaser = document.createElement('div');
+  teaser.innerText = '💬 Masz pytanie? Kliknij tutaj!';
+  teaser.style = 'position: fixed; bottom: 90px; right: 20px; background: #fbbf24; padding: 10px 16px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); font-weight: bold; cursor: pointer; animation: fadeIn 0.6s ease-out forwards;';
+  teaser.addEventListener('click', () => teaser.remove());
+  document.body.appendChild(teaser);
+  setTimeout(() => teaser.remove(), 6000);
+}, 5000);
+
+(function(){
+  const chatbot = document.getElementById('chatbot');
+  const toggleBtn = document.getElementById('chatbot-toggle');
+  const chatbotBody = document.getElementById('chatbot-body');
+  const messagesContainer = document.getElementById('chatbot-messages');
+  const form = document.getElementById('chatbot-form');
+  const input = document.getElementById('chatbot-input');
+  const quickReplies = document.getElementById('chatbot-quick-replies');
+  const msgCounter = document.getElementById('message-count');
+
+  let count = 0;
+  const incrementCounter = () => msgCounter.textContent = (++count).toString();
+
+  function botMessage(text) {
+    const wrapper = document.createElement('div');
+    wrapper.style = 'display: flex; align-items: flex-start; gap: 8px; animation: fadeIn 0.4s ease-out forwards;';
+
+    const avatar = document.createElement('img');
+    avatar.src = 'https://png.pngtree.com/png-clipart/20230927/original/pngtree-man-avatar-image-for-profile-png-image_13001877.png';
+    avatar.style = 'width: 30px; height: 30px; border-radius: 50%;';
+
+    const msg = document.createElement('div');
+    msg.style = 'background: #fbbf24; color: #000; padding: 8px 12px; border-radius: 10px; max-width: 80%; animation: typing 0.3s ease-out forwards;';
+    msg.textContent = text;
+
+    wrapper.appendChild(avatar);
+    wrapper.appendChild(msg);
+    messagesContainer.appendChild(wrapper);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    incrementCounter();
+  }
+
+  function userMessage(text) {
+    const msg = document.createElement('div');
+    msg.style = 'background: #444; color: #eee; padding: 8px 12px; border-radius: 10px; max-width: 80%; align-self: flex-end; margin-bottom: 6px; animation: fadeIn 0.3s ease-out forwards;';
+    msg.textContent = text;
+    messagesContainer.appendChild(msg);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    incrementCounter();
+  }
+
+function toggleChat() {
+  if (chatbotBody.style.maxHeight === '0px') {
+    chatbotBody.style.maxHeight = '450px';
+    chatbotBody.style.opacity = '1';
+    toggleBtn.innerHTML = '&#9650;';
+    chatbot.classList.remove('collapsed'); // <-- usuń klasę kółka
+    input.focus();
+  } else {
+    chatbotBody.style.maxHeight = '0';
+    chatbotBody.style.opacity = '0';
+    toggleBtn.innerHTML = '&#9660;';
+    chatbot.classList.add('collapsed'); // <-- dodaj klasę kółka
+  }
+}
+
+
+  function simulateBotResponse(text) {
+    let response = 'Przepraszam, nie rozumiem.';
+    const txt = text.toLowerCase();
+
+const faqs = [
+  {
+    k: ['cześć', 'hej', 'witaj', 'dzień dobry', 'siema', 'elo'],
+    r: 'Cześć! Jak mogę Ci pomóc? 😊'
+  },
+  {
+    k: ['usługi', 'oferta', 'czym się zajmujecie', 'co robicie', 'co oferujecie', 'produkty', 'zakres usług'],
+    r: 'Oferujemy kompleksowe usługi detailingowe samochodów, w tym mycie, polerowanie, zabezpieczenie powłoką ceramiczną, renowację lakieru i czyszczenie wnętrza.'
+  },
+  {
+    k: ['kontakt', 'mail', 'telefon', 'adres', 'jak się z wami skontaktować', 'gdzie jesteście'],
+    r: 'Możesz się z nami skontaktować telefonicznie pod numerem +48 724 424 290 lub mailowo: shinemastermobile@gmail.com. Nasz adres to ul. Przykładowa 10, Warszawa.'
+  },
+  {
+    k: ['rezerwacja', 'termin', 'spotkanie', 'umówić się', 'kiedy wolny termin', 'jak zarezerwować'],
+    r: 'Aby umówić się na wizytę, zadzwoń do nas pod numer 724-424-290 lub skorzystaj z kalendarza online na stronie.'
+  },
+  {
+    k: ['cennik', 'ile kosztuje', 'koszt', 'cena', 'cennik usług', 'opłaty'],
+    r: 'Ceny naszych usług zależą od zakresu i rodzaju prac. Szczegółowy cennik znajdziesz w zakładce "Cennik" na naszej stronie lub możesz zapytać nas bezpośrednio.'
+  },
+  {
+    k: ['godziny otwarcia', 'kiedy otwarte', 'godziny pracy', 'praca', 'kiedy działacie'],
+    r: 'Jesteśmy działalnością która pracuje z pasją - dlatego nawet jak zadzwonisz o 2 w nocy to przyjmiemy autko na warztat!'
+  },
+  {
+    k: ['lokalizacja', 'gdzie jesteście', 'adres', 'jak dojechać', 'mapa'],
+    r: 'Nasza siedziba znajduje się przy ul. Przykładowej 10 w Warszawie. Możesz skorzystać z mapy na stronie, aby łatwo nas znaleźć.'
+  },
+  {
+    k: ['opinie', 'recenzje', 'co mówią klienci', 'referencje'],
+    r: 'Zapraszamy do przeczytania opinii naszych zadowolonych klientów na stronie lub w Google Reviews.'
+  },
+  {
+    k: ['gwarancja', 'serwis', 'reklamacje', 'zwroty'],
+    r: 'Na wszystkie wykonane usługi udzielamy gwarancji. W razie problemów prosimy o kontakt, pomożemy jak najszybciej.'
+  },
+  {
+    k: ['parking', 'miejsce do parkowania', 'parking dla klientów'],
+    r: 'Dla naszych klientów dostępny jest bezpłatny parking na terenie obiektu.'
+  },
+  {
+    k: ['COVID', 'epidemia', 'bezpieczeństwo', 'sanitarny'],
+    r: 'Dbamy o bezpieczeństwo naszych klientów i pracowników, stosujemy wszelkie wymagane środki higieny i sanitacji.'
+  },
+  {
+    k: ['promocje', 'rabaty', 'zniżki', 'oferty specjalne'],
+    r: 'Aktualne promocje i rabaty znajdziesz na naszej stronie w sekcji "Promocje".'
+  },
+  {
+    k: ['jak działa', 'proces', 'jak to wygląda'],
+    r: 'Proces realizacji usługi zaczyna się od konsultacji, następnie umawiamy termin i wykonujemy usługę zgodnie z ustaleniami.'
+  },
+  {
+    k: ['inne pytania', 'pomoc', 'wsparcie', 'nie wiem', 'co zrobić'],
+    r: 'Jeśli masz inne pytania lub potrzebujesz pomocy, napisz do nas lub zadzwoń – chętnie pomożemy!'
+  }
+];
+
+
+    for (const {k, r} of faqs) {
+      if (k.some(keyword => txt.includes(keyword))) {
+        response = r;
+        break;
+      }
+    }
+    botMessage(response);
+  }
+
+  chatbotBody.style.maxHeight = '1000px';
+  chatbotBody.style.opacity = '1';
+
+  toggleBtn.addEventListener('click', toggleChat);
+  document.getElementById('chatbot-header').addEventListener('click', (e) => {
+    if (e.target === toggleBtn) return;
+    toggleChat();
+  });
+
+  botMessage('Cześć! W czym mogę pomóc?');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    userMessage(text);
+    input.value = '';
+    setTimeout(() => simulateBotResponse(text), 700);
+  });
+
+  // Quick replies
+  const quickOptions = ['📞 Kontakt', '📍 Lokalizacja', '📅 Umów spotkanie'];
+  quickOptions.forEach(option => {
+    const btn = document.createElement('button');
+    btn.textContent = option;
+    btn.style = 'padding: 6px 12px; background: #333; color: #fbbf24; border: none; border-radius: 20px; cursor: pointer; font-size: 12px;';
+    btn.addEventListener('click', () => {
+      userMessage(option);
+      simulateBotResponse(option);
+    });
+    quickReplies.appendChild(btn);
+  });
+})();
+
+// Animations
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+`;
+document.head.appendChild(style);
+</script>
 
 <script>
   // Animacja liczb
@@ -198,6 +577,27 @@
       }
     };
     updateCount();
+  });
+</script>
+
+<script>
+  // Blokada kliknięcia prawym przyciskiem
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+  });
+
+  // Blokada skrótów klawiszowych (np. F12, Ctrl+Shift+I, Ctrl+U)
+  document.addEventListener('keydown', function (e) {
+    // F12
+    if (e.key === 'F12') {
+      e.preventDefault();
+    }
+
+    // Ctrl+Shift+I lub Ctrl+Shift+J lub Ctrl+U
+    if ((e.ctrlKey && e.shiftKey && ['I', 'J'].includes(e.key.toUpperCase())) || 
+        (e.ctrlKey && e.key.toUpperCase() === 'U')) {
+      e.preventDefault();
+    }
   });
 </script>
 
